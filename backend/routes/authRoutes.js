@@ -6,7 +6,7 @@ const bcrypt = require('bcrypt')
 router.post('/register', async (req,res) => {
     //encypt password with bcrypt hash
     const salt = await bcrypt.genSalt(10)
-    const encryptedPassword = await bcrypt.hash(req.bosy.password,salt)
+    const encryptedPassword = await bcrypt.hash(req.body.password,salt)
 
     try{
         //create new user
