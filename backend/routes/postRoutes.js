@@ -70,6 +70,22 @@ router.get('/:id',async (req,res)=>{
         res.status(500).json(err)
     }
 })
+
 //get timeline posts
+router.get('/timeline',async (req,res) =>{
+    try{
+        const currentUser =await Post.findById(req.body.userId)
+        const userPosts =await Post.find({userId: currentUser._id})
+        //map through all followers post to display them.Promise.all is used cause we are to use it anytime we are looping
+        const friendPosts = await Promise.all(
+            currentUser.following.map((friendId) =>{
+                Post.find({userId: friendId})
+            })
+        )
+        res.status(200).json(userPosts.concat(...friendPosts))
+    }catch(err){
+        res.status(500).json(err)
+    }
+})
 
 module.exports = router
