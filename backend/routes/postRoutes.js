@@ -1,5 +1,6 @@
 const router = require('express').Router()
 const Post = require('../models/postModel')
+const User = require('../models/userModel')
 
 //create a post
 router.post('/', async (req,res) =>{
@@ -72,9 +73,12 @@ router.get('/:id',async (req,res)=>{
 })
 
 //get timeline posts
-router.get('/timeline',async (req,res) =>{
+router.get('/timeline/all',async (req,res) =>{
     try{
-        const currentUser =await Post.findById(req.body.userId)
+        const currentUser = await User.findById(req.body.userId)
+        if (!currentUser) {
+            return res.status(404).json('User not found');
+        }
         const userPosts =await Post.find({userId: currentUser._id})
         //map through all followers post to display them.Promise.all is used cause we are to use it anytime we are looping
         const friendPosts = await Promise.all(
@@ -84,6 +88,7 @@ router.get('/timeline',async (req,res) =>{
         )
         res.status(200).json(userPosts.concat(...friendPosts))
     }catch(err){
+        console.log(err)
         res.status(500).json(err)
     }
 })
