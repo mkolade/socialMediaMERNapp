@@ -13,6 +13,7 @@ const register = async (req,res) => {
             email:req.body.email,
             password:encryptedPassword
         })
+        //use validator dependency to vaalidate email and password
         //check if user exists
         const checkUser = await User.findOne({email:req.body.email})
         if(checkUser){
