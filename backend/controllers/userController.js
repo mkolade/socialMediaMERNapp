@@ -22,7 +22,7 @@ const updateUser = async (req,res) =>{
             res.status(500).json(err)
         }
     }else{
-        return res.status(403).json("You can only update your account")
+        return res.status(403).json("You can only update your account")        
     }
 }
 
