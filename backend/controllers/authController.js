@@ -13,7 +13,10 @@ const register = async (req,res) => {
             email:req.body.email,
             password:encryptedPassword
         })
-
+        const checkUser = await User.findOne({email:req.body.email})
+        if(checkUser){
+            return res.status(405).json('email already exists')
+        }
         //save user to db and send response
         const user = await newUser.save()
         res.status(200).json(user)
