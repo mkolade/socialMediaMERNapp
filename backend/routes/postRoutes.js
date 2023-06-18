@@ -79,7 +79,7 @@ router.get('/timeline',async (req,res) =>{
         //map through all followers post to display them.Promise.all is used cause we are to use it anytime we are looping
         const friendPosts = await Promise.all(
             currentUser.following.map((friendId) =>{
-                Post.find({userId: friendId})
+               return Post.find({userId: friendId})
             })
         )
         res.status(200).json(userPosts.concat(...friendPosts))
