@@ -46,7 +46,7 @@ router.get("/:id",async (req,res) =>{
     try{
         const user = await User.findById(req.params.id)
         if(!user){
-            res.status(404).json("user not found")
+          return  res.status(404).json("user not found")
         }
         const {password,updatedAt,createdAt,...others} = user._doc
         res.status(200).json(others)
@@ -67,7 +67,7 @@ router.put("/:id/follow",async (req,res) =>{
 
                 res.status(200).json("User has been successfully followed")
             }else{
-                res.status(403).json("You alrady follow this user")
+                res.status(403).json("You already follow this user")
             }
 
         }catch(err){
@@ -77,6 +77,29 @@ router.put("/:id/follow",async (req,res) =>{
         res.status(404).json("You cant follow yourself")
     }
 })
+
 //unfollow a user
+router.put("/:id/unfollow",async (req,res) =>{
+    if(req.body.userId !== req.params.id){
+        try{
+            const currentUser = await User.findById(req.body.userId)
+            const userToUnFollow = await User.findById(req.params.id)
+
+            if(userToUnFollow.followers.includes(req.body.userId)){
+                await userToUnFollow.updateOne({$pull: {followers:req.body.userId}})
+                await currentUser.updateOne({$pull: {following:req.params.id}})
+
+                res.status(200).json("User has been successfully unfollowed")
+            }else{
+                res.status(403).json("You dont follow this user")
+            }
+
+        }catch(err){
+            res.status(500).json(err)
+        }
+    }else{
+        res.status(404).json("You cant unfollow yourself")
+    }
+})
 
 module.exports = router
