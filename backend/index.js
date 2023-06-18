@@ -6,6 +6,7 @@ const dotenv = require('dotenv')
 const  morgan = require('morgan')
 const userRoutes = require('./routes/userRoutes')
 const authRoutes = require('./routes/authRoutes')
+const postRoutes = require('./routes/postRoutes')
 
 dotenv.config()
 
@@ -32,5 +33,7 @@ app.use(express.json());
 app.use(morgan('common'));
 app.use(helmet());
 
+//routes
 app.use('/api/users',userRoutes)
 app.use('/api/auth',authRoutes)
+app.use('/api/post',postRoutes)
