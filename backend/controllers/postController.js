@@ -69,7 +69,7 @@ const getPost = async (req,res)=>{
 //get timeline posts
 const timelinePost = async (req,res) =>{
     try{
-        const currentUser = await User.findById(req.body.userId)
+        const currentUser = await User.findById(req.params.userId)
         if (!currentUser) {
             return res.status(404).json('User not found');
         }
