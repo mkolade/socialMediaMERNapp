@@ -1,11 +1,12 @@
-
+import HomePage from "./pages/HomePage"
+import PeopleIcon from '@mui/icons-material/People'; 
 
 function App() {
-  
 
   return (
     <div>
-      <h1>app</h1>
+      <HomePage/>
+      <PeopleIcon/>
     </div>
   )
 }
