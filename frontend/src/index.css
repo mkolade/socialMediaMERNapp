@@ -4,3 +4,169 @@
   font-family: 'Noto Sans', sans-serif;
   font-family: 'Roboto', sans-serif;
 }
+
+/* Topbar styles */
+.topbarContainer{
+  height: 50px;
+  width: 100%;
+  background-color: #1877f2;
+  display: flex;
+  align-items: center;
+  position: sticky;
+  top: 0%;
+}
+
+.topbarLeft{
+  flex: 2.5;
+}
+.logo{
+  font-size: 24px;
+  margin-left: 20px;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+}
+
+.topbarCenter{
+  flex: 5;
+}
+.searchBar{
+  width: 100%;
+  height: 32px;
+  background: white;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+}
+
+.searchIcon{
+  font-size: 20px;
+  margin-left: 10px;
+}
+.searchInput{
+  width: 70%;
+  border: none;
+}
+.searchInput:focus{
+  outline: none;
+}
+
+.topbarRight{
+  flex: 4;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  color: white;
+}
+
+.topbarLink{
+  font-size: 14px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.topbarIcons{
+  display: flex;
+}
+.topbarIconItem{
+  margin-right: 15px;
+  cursor: pointer;
+  position: relative;
+}
+
+.topbarIconBadge{
+  position: absolute;
+  top: -5px;
+  right: -8px;
+  background: red;
+  width: 15px;
+  height: 15px;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+}
+
+.topbarImg{
+  width: 32px;
+  height: 32px;
+  border-radius: 100%;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+/* Homepage */
+.homeContainer{
+  display: flex;
+}
+
+/* sidebar */
+.sidebar{
+  flex: 3;
+  height: calc(100vh - 50px);
+  overflow: scroll;
+}
+::-webkit-scrollbar{
+  width: 10px;
+}
+::-webkit-scrollbar-track{
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb{
+ background: rgb(159, 157, 157);
+}
+.sidebarWrapper{
+  padding: 20px;
+}
+.sidebarList{
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.sidebarListitem{
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.listIcon{
+  margin-right: 10px;
+}
+.sidebarButton{
+  width: 150px;
+  border: none;
+  font-weight: bolder;
+  padding: 10px;
+  border-radius: 5px;
+}
+.sidebareHr{
+  margin: 20px 0;
+}
+.sidebarFriendsList{
+  margin: 0%;
+  padding: 0%;
+  list-style: none;
+}
+.sidebarFriends{
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.sidebarFriendsImg{
+  width: 32px;
+  height: 32px;
+  object-fit: cover;
+  border-radius: 100%;
+  margin-right: 10px;
+}
+
+
+/* feed */
+.feed{
+  flex: 5.5;
+}
+
+/* rightbar */
+.rightbar{
+  flex: 3.5;
+}
