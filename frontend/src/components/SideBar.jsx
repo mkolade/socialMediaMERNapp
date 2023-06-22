@@ -1,5 +1,6 @@
 import React from 'react'
 import {RssFeed,PlayCircleFilledOutlined,Group,Bookmark,HelpOutline,Chat,WorkOutline,Event,School} from '@mui/icons-material'
+import { Users } from '../dummyData'
 export default function SideBar() {
   return (
     <div className='sidebar'>
@@ -45,34 +46,12 @@ export default function SideBar() {
         <button className="sidebarButton">Show more</button>
         <hr className="sidebareHr" />
         <ul className="sidebarFriendsList">
-          <li className="sidebarFriends">
-            <img src="/src/assets/person/2.jpeg" alt="" className="sidebarFriendsImg" />
-            <span className="sidebarFriendsName">Albino guy</span>
-          </li>
-          <li className="sidebarFriends">
-            <img src="/src/assets/person/3.jpeg" alt="" className="sidebarFriendsImg" />
-            <span className="sidebarFriendsName">Candy Fletcher</span>
-          </li>
-          <li className="sidebarFriends">
-            <img src="/src/assets/person/4.jpeg" alt="" className="sidebarFriendsImg" />
-            <span className="sidebarFriendsName">Chelsea Scott</span>
-          </li>
-          <li className="sidebarFriends">
-            <img src="/src/assets/person/5.jpeg" alt="" className="sidebarFriendsImg" />
-            <span className="sidebarFriendsName">Linda White</span>
-          </li>
-          <li className="sidebarFriends">
-            <img src="/src/assets/person/6.jpeg" alt="" className="sidebarFriendsImg" />
-            <span className="sidebarFriendsName">Braids Norton</span>
-          </li>
-          <li className="sidebarFriends">
-            <img src="/src/assets/person/7.jpeg" alt="" className="sidebarFriendsImg" />
-            <span className="sidebarFriendsName">Model ??</span>
-          </li>
-          <li className="sidebarFriends">
-            <img src="/src/assets/person/8.jpeg" alt="" className="sidebarFriendsImg" />
-            <span className="sidebarFriendsName">Curly-haired chap</span>
-          </li>
+          {Users.map((user) =>(
+            <li className="sidebarFriends">
+              <img src={user.profilePicture} alt="" className="sidebarFriendsImg" />
+              <span className="sidebarFriendsName">{user.username}</span>
+            </li>
+          ))}
         </ul>
       </div>
     </div>

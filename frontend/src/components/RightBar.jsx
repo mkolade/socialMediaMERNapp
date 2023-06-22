@@ -1,4 +1,5 @@
 import React from 'react'
+import { Users } from '../dummyData'
 
 export default function RightBar() {
   return (
@@ -13,55 +14,16 @@ export default function RightBar() {
         <img src="src/assets/ad.png" alt="" className="rightbarAds" />
         <h4 className="rightbarTitle">Online friends</h4>
         <ul className="onlineFriendsList">
-          <li className="onlineFriend">
+          {Users.map(user =>(
+            <li className="onlineFriend" key={user.id}>
             <div className="profileImgContainer">
-              <img src="/src/assets/person/2.jpeg" alt="" className="profileImg" />
+              <img src={user.profilePicture} alt="" className="profileImg" />
               <span className="profileOnlineIcon"></span>
             </div>
-            <span className="profileUsername">Albino guy</span>
+            <span className="profileUsername">{user.username}</span>
           </li>
-          <li className="onlineFriend">
-            <div className="profileImgContainer">
-              <img src="/src/assets/person/3.jpeg" alt="" className="profileImg" />
-              <span className="profileOnlineIcon"></span>
-            </div>
-            <span className="profileUsername">Candy Fletcher</span>
-          </li>
-          <li className="onlineFriend">
-            <div className="profileImgContainer">
-              <img src="/src/assets/person/4.jpeg" alt="" className="profileImg" />
-              <span className="profileOnlineIcon"></span>
-            </div>
-            <span className="profileUsername">Chelsea Scott</span>
-          </li>
-          <li className="onlineFriend">
-            <div className="profileImgContainer">
-              <img src="/src/assets/person/5.jpeg" alt="" className="profileImg" />
-              <span className="profileOnlineIcon"></span>
-            </div>
-            <span className="profileUsername">Linda White</span>
-          </li>
-          <li className="onlineFriend">
-            <div className="profileImgContainer">
-              <img src="/src/assets/person/6.jpeg" alt="" className="profileImg" />
-              <span className="profileOnlineIcon"></span>
-            </div>
-            <span className="profileUsername">Braids Norton</span>
-          </li>
-          <li className="onlineFriend">
-            <div className="profileImgContainer">
-              <img src="/src/assets/person/7.jpeg" alt="" className="profileImg" />
-              <span className="profileOnlineIcon"></span>
-            </div>
-            <span className="profileUsername">Model ??</span>
-          </li>
-          <li className="onlineFriend">
-            <div className="profileImgContainer">
-              <img src="/src/assets/person/8.jpeg" alt="" className="profileImg" />
-              <span className="profileOnlineIcon"></span>
-            </div>
-            <span className="profileUsername">Curly-haired chap</span>
-          </li>
+          ))}
+          
         </ul>
       </div>
     </div>
