@@ -1,11 +1,14 @@
-import HomePage from "./pages/HomePage"
+import HomePage from "./pages/HomePage/HomePage"
+import Profile from "./pages/Profile/Profile"
+import { Routes,Route } from "react-router-dom"
  
 
 function App() {
 
   return (
     <div>
-      <HomePage/>
+      {/* <HomePage/> */}
+      <Profile/>
     </div>
   )
 }

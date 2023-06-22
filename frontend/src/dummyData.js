@@ -37,7 +37,7 @@ export const Users = [
   {
     id:8,
     profilePicture: "/src/assets/person/8.jpeg",
-    username: "Kristen Thomas",
+    username: "Curly-haired chap",
   },
   {
     id:9,
@@ -47,7 +47,7 @@ export const Users = [
   {
     id:10,
     profilePicture: "/src/assets/person/10.jpeg",
-    username: "Curly-haired chap",
+    username: "Kristen Tomas",
   },
 ];
 
