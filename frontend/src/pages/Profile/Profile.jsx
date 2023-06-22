@@ -12,10 +12,10 @@ export default function Profile() {
       <div className="profile">
         <SideBar/>
         <div className="profileRight">
-          <div className="profileTop">
+          <div className="profileRightTop">
             kjhfj
           </div>
-          <div className="profileBottom">
+          <div className="profileRightBottom">
             <Feed/>
             <RightBar/>
           </div>
