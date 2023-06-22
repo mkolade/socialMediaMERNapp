@@ -4,7 +4,9 @@ export default function Post() {
   return (
     <div className='post'>
       <div className="postWrapper">
-        Hello mofos
+        <div className="postTop"></div>
+        <div className="postMiddle"></div>
+        <div className="postBottom"></div>
       </div>
     </div>
   )
