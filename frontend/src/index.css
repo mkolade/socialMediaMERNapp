@@ -272,7 +272,38 @@
 .postDate{
   font-size: 13px;
 }
-
+.postMiddle{
+  margin: 20px 0;
+}
+.postMainImg{
+  width: 100%;
+  max-height: 500px;
+  margin: 20px 0;
+  object-fit: contain;
+}
+.postBottom{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.postBottomLeft{
+  display: flex;
+  align-items: center
+}
+.postLikeIcon{
+  width: 24px;
+  height: 24px;
+  margin-right: 5px;
+  cursor: pointer;
+}
+.postLikeCounter{
+  font-size: 15px;
+}
+.postCommentCounter{
+  font-size: 15px;
+  border-bottom: 1px dashed gray;
+  cursor: pointer;
+}
 
 /* rightbar */
 .rightbar{
