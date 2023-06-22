@@ -310,3 +310,19 @@
 .rightbar{
   flex: 3.5;
 }
+.rightbarWrapper{
+  padding: 20px 20px 0 0 ;
+}
+.birthdayContainer{
+  display: flex;
+  align-items: center;
+}
+.birthdayImg{
+  height: 40px;
+  width: 40px;
+  margin-right: 10px;
+}
+.birthdayText{
+  font-weight: 300;
+  font-size: 15px;
+}
