@@ -312,7 +312,7 @@
 }
 .rightbarWrapper{
   padding: 20px 20px 0 0 ;
-}
+}/* Birthdays */
 .birthdayContainer{
   display: flex;
   align-items: center;
@@ -325,4 +325,46 @@
 .birthdayText{
   font-weight: 300;
   font-size: 15px;
+}
+.rightbarAds{
+  width: 100%;
+  margin: 30px 0;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.rightbarTitle{
+  margin-bottom: 20px;
+}
+.onlineFriendsList{
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.onlineFriend{
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+.profileImgContainer{
+  position: relative;
+  margin-right: 10px ;
+}
+.profileImg{
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.profileOnlineIcon{
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: limegreen;
+  position: absolute;
+  top: -2px;
+  right: 0;
+  border: 2px solid white;
+}
+.profileUsername{
+  font-weight: 500;
 }
