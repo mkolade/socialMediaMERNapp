@@ -7,7 +7,11 @@ export default function Login() {
             <div className="loginLogo">Mksocial</div>
             <div className="loginDesc">Connect with friends and family all over the globe on Mksocial</div>
         </div>
-        <div className="loginRight"></div>
+        <div className="loginRight">
+            <div className="loginBox">
+                jhsdgfhkbdsbvj
+            </div>
+        </div>
       </div>
     </div>
   )
