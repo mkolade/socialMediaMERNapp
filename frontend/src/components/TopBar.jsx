@@ -31,7 +31,7 @@ export default function TopBar() {
           <div className="topbarIconItem">
             <Chat/>
             <span className="topbarIconBadge">
-              1
+              2
             </span>
           </div>
 
