@@ -34,16 +34,16 @@ export default function RightBar() {
         <h4 className='profileRightbarTitle'>User information</h4>
         <div className="profileRightbarInfo">
           <div className="profileRightbarInfoItem">
-            <span className="profileRightbarInfoKey">City:</span>
-            <span className="profileRightbarInfovalue">New york</span>
+            <span className="profileRightbarInfoKey">City :</span>
+            <span className="profileRightbarInfoValue">New york</span>
           </div>
           <div className="profileRightbarInfoItem">
-            <span className="profileRightbarInfoKey">From:</span>
-            <span className="profileRightbarInfovalue">Manchester</span>
+            <span className="profileRightbarInfoKey">From :</span>
+            <span className="profileRightbarInfoValue">Manchester</span>
           </div>
           <div className="profileRightbarInfoItem">
-            <span className="profileRightbarInfoKey">Relationship Status:</span>
-            <span className="profileRightbarInfovalue">Complicated</span>
+            <span className="profileRightbarInfoKey">Relationship Status :</span>
+            <span className="profileRightbarInfoValue">Complicated</span>
           </div>
         </div>
 

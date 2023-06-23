@@ -10,3 +10,25 @@
   font-weight: 600;
   margin-bottom: 10px;
 }
+.profileRightbarInfo{
+  margin-bottom: 30px;
+}
+.profileRightbarInfoItem{
+  margin-bottom: 10px;
+}
+.profileRightbarInfoKey{
+  margin-right: 10px;
+  font-weight: 500;
+  color: #555;
+}
+.profileRightbarInfoValue{
+  font-weight: 300;
+}
+
+
+.followerImg{
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 5px;
+}
