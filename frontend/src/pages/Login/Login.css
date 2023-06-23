@@ -45,3 +45,30 @@
 .loginInput:focus{
     outline: none;
 }
+.loginSubmit{
+    height: 40px;
+    background: #1775ee;
+    color: white;
+    font-size: 20px;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 10px;
+    border: none;
+}
+.loginForgot{
+    text-align: center;
+    color: #1775ee;
+    cursor: pointer;
+}
+.loginCreateNew{
+    width: 60%;
+    align-self: center;
+    height: 40px;
+    background: #42b72a;
+    color: white;
+    font-size: 20px;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 10px;
+    border: none;
+}
