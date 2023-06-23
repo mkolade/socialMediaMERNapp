@@ -24,7 +24,7 @@ export default function Profile() {
           </div>
           <div className="profileRightBottom">
             <Feed/>
-            <RightBar Profile/>
+            <RightBar profile/>
           </div>
         </div>
       </div>

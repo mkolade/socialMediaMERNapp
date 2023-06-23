@@ -1,7 +1,7 @@
 import React from 'react'
 import { Users } from '../dummyData'
 
-export default function RightBar() {
+export default function RightBar({profile}) {
   const HomeRightbar = () =>{
     return (
       <>
@@ -63,7 +63,7 @@ export default function RightBar() {
   return (
     <div className='rightbar'>
       <div className="rightbarWrapper">
-        <ProfileRightbar/>
+        {profile ? <ProfileRightbar/> : <HomeRightbar/>}
       </div>
     </div>
   )

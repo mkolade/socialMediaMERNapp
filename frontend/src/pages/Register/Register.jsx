@@ -14,6 +14,7 @@ export default function Register() {
                         <input placeholder="Email" type='email' className="registerInput" />
                         <input placeholder="Username" type='username' className="registerInput" />
                         <input placeholder="Password" type='password' className="registerInput" />
+                        <input placeholder="Password again" type='password' className="registerInput" />
                         <button className="registerSubmit" type='submit'>Sign up</button>
                         <button className="registerCreateNew">Log into account</button>
                     </form>
