@@ -49,26 +49,13 @@ export default function RightBar() {
 
         <h4 className='profileRightbarTitle'>Following</h4>
         <div className="profileFollowings">
-          <div className="profileFollower">
-            <img className='followerImg' src="src/assets/person/2.jpeg" alt="" />
-            <span className="followerName">Albino Guy</span>
-          </div>
-          <div className="profileFollower">
-            <img className='followerImg' src="src/assets/person/2.jpeg" alt="" />
-            <span className="followerName">Albino Guy</span>
-          </div>
-          <div className="profileFollower">
-            <img className='followerImg' src="src/assets/person/2.jpeg" alt="" />
-            <span className="followerName">Albino Guy</span>
-          </div>
-          <div className="profileFollower">
-            <img className='followerImg' src="src/assets/person/2.jpeg" alt="" />
-            <span className="followerName">Albino Guy</span>
-          </div>
-          <div className="profileFollower">
-            <img className='followerImg' src="src/assets/person/2.jpeg" alt="" />
-            <span className="followerName">Albino Guy</span>
-          </div>
+          {Users.map((user) =>(
+            <div className="profileFollower" key={user.id}>
+              <img className='followerImg' src={user.profilePicture} alt="" />
+              <span className="followerName">{user.username}</span>
+            </div>
+          ))}
+          
         </div>
       </>
     )

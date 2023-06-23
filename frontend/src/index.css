@@ -24,8 +24,20 @@
 .profileRightbarInfoValue{
   font-weight: 300;
 }
-
-
+.profileFollowings{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.profileFollower{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+.followerImg{
+  margin-bottom: 5px;
+}
 .followerImg{
   width: 100px;
   height: 100px;
