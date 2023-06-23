@@ -13,11 +13,18 @@ export default function Profile() {
         <SideBar/>
         <div className="profileRight">
           <div className="profileRightTop">
-            kjhfj
+            <div className="profileCover">
+              <img className="profileCoverImg" src="src/assets/post/3.jpeg" alt="" />
+              <img className="profileUserImg" src="src/assets/person/1.jpeg" alt="" />
+            </div>
+            <div className="profileInfo">
+              <h4 className="profileName">Linda Norton</h4>
+              <span className="profileDesc">Lorem ipsum dolor </span>
+            </div>
           </div>
           <div className="profileRightBottom">
             <Feed/>
-            <RightBar/>
+            <RightBar Profile/>
           </div>
         </div>
       </div>

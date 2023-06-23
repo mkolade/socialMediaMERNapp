@@ -2,9 +2,9 @@ import React from 'react'
 import { Users } from '../dummyData'
 
 export default function RightBar() {
-  return (
-    <div className='rightbar'>
-      <div className="rightbarWrapper">
+  const HomeRightbar = () =>{
+    return (
+      <>
         <div className="birthdayContainer">
           <img src="/src/assets/gift.png" alt="" className="birthdayImg" />
           <span className="birthdayText">
@@ -25,6 +25,58 @@ export default function RightBar() {
           ))}
           
         </ul>
+      </>
+    )
+  }
+  const ProfileRightbar = () =>{
+    return(
+      <>
+        <h4 className='profileRightbarTitle'>User information</h4>
+        <div className="profileRightbarInfo">
+          <div className="profileRightbarInfoItem">
+            <span className="profileRightbarInfoKey">City:</span>
+            <span className="profileRightbarInfovalue">New york</span>
+          </div>
+          <div className="profileRightbarInfoItem">
+            <span className="profileRightbarInfoKey">From:</span>
+            <span className="profileRightbarInfovalue">Manchester</span>
+          </div>
+          <div className="profileRightbarInfoItem">
+            <span className="profileRightbarInfoKey">Relationship Status:</span>
+            <span className="profileRightbarInfovalue">Complicated</span>
+          </div>
+        </div>
+
+        <h4 className='profileRightbarTitle'>Following</h4>
+        <div className="profileFollowings">
+          <div className="profileFollower">
+            <img className='followerImg' src="src/assets/person/2.jpeg" alt="" />
+            <span className="followerName">Albino Guy</span>
+          </div>
+          <div className="profileFollower">
+            <img className='followerImg' src="src/assets/person/2.jpeg" alt="" />
+            <span className="followerName">Albino Guy</span>
+          </div>
+          <div className="profileFollower">
+            <img className='followerImg' src="src/assets/person/2.jpeg" alt="" />
+            <span className="followerName">Albino Guy</span>
+          </div>
+          <div className="profileFollower">
+            <img className='followerImg' src="src/assets/person/2.jpeg" alt="" />
+            <span className="followerName">Albino Guy</span>
+          </div>
+          <div className="profileFollower">
+            <img className='followerImg' src="src/assets/person/2.jpeg" alt="" />
+            <span className="followerName">Albino Guy</span>
+          </div>
+        </div>
+      </>
+    )
+  }
+  return (
+    <div className='rightbar'>
+      <div className="rightbarWrapper">
+        <ProfileRightbar/>
       </div>
     </div>
   )

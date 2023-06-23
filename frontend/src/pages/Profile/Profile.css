@@ -4,6 +4,39 @@
 .profileRight{
     flex: 9;
 }
+.profileCover{
+    height: 320px;
+    position: relative;
+}
+.profileCoverImg{
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+.profileUserImg{
+    position: absolute;
+    object-fit: cover;
+    width: 150px;
+    height: 150px;
+    border-radius: 100%;
+    left: 0;
+    right: 0;
+    top: 150px;
+    border: 3.5px solid white;
+    margin: auto;
+}
+.profileInfo{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.profileName{
+    font-size: 24px;
+}
+.profileDesc{
+    font-weight: 300;
+}
 .profileRightBottom{
     display: flex;
 }
