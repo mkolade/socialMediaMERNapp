@@ -35,6 +35,9 @@
   margin-bottom: 20px;
   cursor: pointer;
 }
+.followerName{
+  width: 110px;
+}
 .followerImg{
   margin-bottom: 5px;
 }
