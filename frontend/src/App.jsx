@@ -1,14 +1,14 @@
 import HomePage from "./pages/HomePage/HomePage"
 import Login from "./pages/Login/Login"
 import Profile from "./pages/Profile/Profile"
-import {BrowserRouter, Routes,Route } from "react-router-dom"
+import {BrowserRouter as Router, Routes,Route } from "react-router-dom"
 import Register from "./pages/Register/Register"
  
 
 function App() {
 
   return (
-    <BrowserRouter>
+    <Router>
       <div>
         <Routes>
           <Route path={'/'} element={<HomePage/>}/>
@@ -17,7 +17,7 @@ function App() {
           <Route path={'/register'} element={<Register/>}/>
         </Routes>
       </div>
-    </BrowserRouter>
+    </Router>
     
   )
 }
