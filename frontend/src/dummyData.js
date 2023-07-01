@@ -55,7 +55,7 @@ export const Posts = [
   {
     id: 1,
     desc: "Love For All, Hatred For None.",
-    photo: "/src/assets/post/1.jpeg",
+    photo: "/src/assets/post/post1.jpeg",
     date: "5 mins ago",
     userId: 1,
     like: 32,
@@ -63,7 +63,7 @@ export const Posts = [
   },
   {
     id: 2,
-    photo: "/src/assets/post/2.jpeg",
+    photo: "/src/assets/post/post2.jpeg",
     date: "15 mins ago",
     userId: 2,
     like: 2,
@@ -72,7 +72,7 @@ export const Posts = [
   {
     id: 3,
     desc: "Every moment is a fresh beginning.",
-    photo: "/src/assets/post/3.jpeg",
+    photo: "/src/assets/post/post3.jpeg",
     date: "1 hour ago",
     userId: 3,
     like: 61,
@@ -80,7 +80,7 @@ export const Posts = [
   },
   {
     id: 4,
-    photo: "/src/assets/post/4.jpeg",
+    photo: "/src/assets/post/post4.jpeg",
     date: "4 hours ago",
     userId: 4,
     like: 7,
@@ -88,7 +88,7 @@ export const Posts = [
   },
   {
     id: 5,
-    photo: "/src/assets/post/5.jpeg",
+    photo: "/src/assets/post/post5.jpeg",
     date: "5 hours ago",
     userId: 5,
     like: 23,
@@ -96,7 +96,7 @@ export const Posts = [
   },
   {
     id: 6,
-    photo: "/src/assets/post/6.jpeg",
+    photo: "/src/assets/post/post6.jpeg",
     date: "1 day ago",
     userId: 6,
     like: 44,
@@ -105,7 +105,7 @@ export const Posts = [
   {
     id: 7,
     desc: "Never regret anything that made you smile.",
-    photo: "/src/assets/post/7.jpeg",
+    photo: "/src/assets/post/post7.jpeg",
     date: "2 days ago",
     userId: 7,
     like: 52,
@@ -113,7 +113,7 @@ export const Posts = [
   },
   {
     id: 8,
-    photo: "/src/assets/post/8.jpeg",
+    photo: "/src/assets/post/post8.jpeg",
     date: "3 days ago",
     userId: 8,
     like: 15,
@@ -122,7 +122,7 @@ export const Posts = [
   {
     id: 9,
     desc: "Change the world by being yourself.",
-    photo: "/src/assets/post/9.jpeg",
+    photo: "/src/assets/post/post9.jpeg",
     date: "5 days ago",
     userId: 9,
     like: 11,
@@ -130,7 +130,7 @@ export const Posts = [
   },
   {
     id: 10,
-    photo: "/src/assets/post/10.jpeg",
+    photo: "/src/assets/post/post10.jpeg",
     date: "1 week ago",
     userId: 10,
     like: 104,
