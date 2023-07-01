@@ -1,52 +1,52 @@
 export const Users = [
   {
     id:1,
-    profilePicture: "/src/assets/person/1.jpeg",
+    profilePicture: "/src/assets/person/person1.jpeg",
     username: "Linda Norton",
   },
   {
     id:2,
-    profilePicture: "/src/assets/person/2.jpeg",
+    profilePicture: "/src/assets/person/person2.jpeg",
     username: "Albino guy",
   },
   {
     id:3,
-    profilePicture: "/src/assets/person/3.jpeg",
+    profilePicture: "/src/assets/person/person3.jpeg",
     username: "Candy Fletcher",
   },
   {
     id:4,
-    profilePicture: "/src/assets/person/4.jpeg",
+    profilePicture: "/src/assets/person/person4.jpeg",
     username: "Chelsea Scott",
   },
   {
     id:5,
-    profilePicture: "/src/assets/person/5.jpeg",
+    profilePicture: "/src/assets/person/person5.jpeg",
     username: "Linda White",
   },
   {
     id:6,
-    profilePicture: "/src/assets/person/6.jpeg",
+    profilePicture: "/src/assets/person/person6.jpeg",
     username: "Braids Norton",
   },
   {
     id:7,
-    profilePicture: "/src/assets/person/7.jpeg",
+    profilePicture: "/src/assets/person/person7.jpeg",
     username: "Model ??",
   },
   {
     id:8,
-    profilePicture: "/src/assets/person/8.jpeg",
+    profilePicture: "/src/assets/person/person8.jpeg",
     username: "Curly chap",
   },
   {
     id:9,
-    profilePicture: "/src/assets/person/9.jpeg",
+    profilePicture: "/src/assets/person/person9.jpeg",
     username: "Gary Neville",
   },
   {
     id:10,
-    profilePicture: "/src/assets/person/10.jpeg",
+    profilePicture: "/src/assets/person/person10.jpeg",
     username: "Kristen Tomas",
   },
 ];
