@@ -37,12 +37,12 @@ export const Users = [
   {
     id:8,
     profilePicture: "/src/assets/person/8.jpeg",
-    username: "Curly-haired chap",
+    username: "Curly chap",
   },
   {
     id:9,
     profilePicture: "/src/assets/person/9.jpeg",
-    username: "Gary Duty",
+    username: "Gary Neville",
   },
   {
     id:10,
