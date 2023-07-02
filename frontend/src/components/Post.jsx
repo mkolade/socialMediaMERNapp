@@ -5,13 +5,23 @@ import { Users } from '../dummyData'
 export default function Post({post}) {
   {/* ask chatgpt to explain this part indepth */}
   const postOwner = Users.filter((user) => user.id === post.userId)[0]
-
   const [like,setLike] = useState(post.like)
   const [isLiked,setIsLiked] = useState(false)
   const handleLike = () =>{
     setLike(isLiked ? like - 1 : like + 1)
     setIsLiked(!isLiked)
   }
+  const [user,setUser] = useState({})
+
+
+  useEffect( () =>{
+    const fetchUser = async () =>{
+      const res = await axios.get("http://localhost:8000/api/user/648f413f9ea807a0c753e5ac");
+      /* setUser(res.data) */
+      console.log(res)
+    }
+    fetchUser()
+  },[])
 
   return (
     <div className='post'>
