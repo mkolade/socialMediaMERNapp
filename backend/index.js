@@ -4,6 +4,7 @@ const mongoose = require('mongoose')
 const helmet = require('helmet')
 const dotenv = require('dotenv')
 const  morgan = require('morgan')
+const cors = require('cors')
 const userRoutes = require('./routes/userRoutes')
 const authRoutes = require('./routes/authRoutes')
 const postRoutes = require('./routes/postRoutes')
@@ -32,6 +33,7 @@ const connectToMongoDb = async () =>{
 app.use(express.json());
 app.use(morgan('common'));
 app.use(helmet());
+app.use(cors());
 
 //routes
 app.use('/api/users',userRoutes)
