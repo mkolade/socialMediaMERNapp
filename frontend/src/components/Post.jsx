@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import {MoreVert} from '@mui/icons-material'
 import { Users } from '../dummyData'
+import axios from 'axios'
 
 export default function Post({post}) {
   {/* ask chatgpt to explain this part indepth */}
@@ -12,11 +13,9 @@ export default function Post({post}) {
     setIsLiked(!isLiked)
   }
   const [user,setUser] = useState({})
-
-
   useEffect( () =>{
     const fetchUser = async () =>{
-      const res = await axios.get("http://localhost:8000/api/user/648f413f9ea807a0c753e5ac");
+      const res = await axios.get("http://localhost:8000/api/users/648f413f9ea807a0c753e5ac");
       /* setUser(res.data) */
       console.log(res)
     }
