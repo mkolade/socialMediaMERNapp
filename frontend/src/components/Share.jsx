@@ -1,11 +1,12 @@
 import React from 'react'
 import {PermMedia,Label,Room,EmojiEmotions} from '@mui/icons-material'
+import person1 from '../assets/person/person1.jpeg'
 export default function Share() {
   return (
     <div className='share'>
       <div className="shareWrapper">
         <div className="shareTop">
-            <img src="/src/assets/person/person1.jpeg" alt="" className='shareProfileImg'/>
+            <img src={person1} alt="" className='shareProfileImg'/>
             <input placeholder='What`s on your mind' className='shareInput' />
         </div>
         <hr className='shareHr'/>
