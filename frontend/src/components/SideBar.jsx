@@ -47,7 +47,7 @@ export default function SideBar() {
         <hr className="sidebareHr" />
         <ul className="sidebarFriendsList">
           {Users.map((user) =>(
-            <li className="sidebarFriends">
+            <li className="sidebarFriends" key={user.id}>
               <img src={user.profilePicture} alt="" className="sidebarFriendsImg" />
               <span className="sidebarFriendsName">{user.username}</span>
             </li>
