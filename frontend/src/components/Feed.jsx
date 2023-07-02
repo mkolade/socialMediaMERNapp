@@ -7,20 +7,20 @@ export default function Feed() {
   const [posts,setPosts] = useState([])
 
   useEffect( () =>{
-    const fetchData = async () =>{
-      const res = await axios.get("post/timeline/all/648f413f9ea807a0c753e5ac")
-      console.log(res)
+    const fetchPosts = async () =>{
+      const res = await axios.get("http://localhost:8000/api/post/timeline/all/648f413f9ea807a0c753e5ac");
+      setPosts(res.data)
     }
-    fetchData()
+    fetchPosts()
   },[])
 
   return (
     <div className='feed'>
       <div className="feedWrapper">
         <Share/>
-        {/* {Posts.map((post) =>(
+        {posts.map((post) =>(
           <Post post = {post} key={post.id}/>
-        ))} */}
+        ))}
         
       </div>
     </div>
