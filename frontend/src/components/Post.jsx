@@ -30,7 +30,7 @@ export default function Post({post}) {
       <div className="postWrapper">
         <div className="postTop">
           <div className="postTopLeft">
-            {/* <img className='postProfileImg' src={postOwner.profilePicture} alt="" /> */}
+            <img className='postProfileImg' src={user.profilePicture} alt="" />
             <span className="postUsername">
               {user && user.username && user.username
                 .split(' ')
