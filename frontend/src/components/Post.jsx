@@ -2,7 +2,7 @@ import React, { useState,useEffect } from 'react'
 import {MoreVert} from '@mui/icons-material'
 import { Users } from '../dummyData'
 import axios from 'axios'
-import noAvatar from '../assets/person/noAvatar.jpeg'
+import noAvatar from '../assets/person/noAvatar.png'
 
 export default function Post({post}) {
 
