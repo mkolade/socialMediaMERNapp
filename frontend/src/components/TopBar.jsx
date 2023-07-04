@@ -19,7 +19,7 @@ export default function TopBar() {
       <div className="topbarRight">
         <div className="topbarLinks">
           <Link to={'/'}><span className="topbarLink">Homepage</span></Link>
-          <Link to={'/profile'}><span className="topbarLink">Profile</span></Link>
+          <span className="topbarLink">Timeline</span>
         </div>
         <div className="topbarIcons">
         
