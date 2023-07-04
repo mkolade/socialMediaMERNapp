@@ -10,7 +10,7 @@ export default function Post({post}) {
   {/* ask chatgpt to explain this part indepth */}
   /* const postOwner = Users.filter((user) => user.id === post.userId)[0]
  */
-  const [like,setLike] = useState(post.like)
+  const [like,setLike] = useState(post.likes.length)
   const [isLiked,setIsLiked] = useState(false)
   const handleLike = () =>{
     setLike(isLiked ? like - 1 : like + 1)
@@ -31,7 +31,7 @@ export default function Post({post}) {
       <div className="postWrapper">
         <div className="postTop">
           <div className="postTopLeft">
-            <img className='postProfileImg' src={user.profilePicture} alt="" />
+            <img className='postProfileImg' src={user.profilePicture || noAvatar} alt="" />
             <span className="postUsername">
               {user && user.username && user.username
                 .split(' ')
@@ -47,7 +47,7 @@ export default function Post({post}) {
         </div>
         <div className="postMiddle">
           <span className="postText">{post.desc}</span>
-          <img src={post.photo} alt="" className="postMainImg" />
+          <img src={`/src/assets/post/${post.img}`} alt="" className="postMainImg" />
         </div>
         <div className="postBottom">
           <div className="postBottomLeft">
