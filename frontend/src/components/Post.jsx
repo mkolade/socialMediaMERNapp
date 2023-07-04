@@ -25,7 +25,7 @@ export default function Post({post}) {
       setUser(res.data)
     }
     fetchUser()
-  },[])
+  },[post.userId])
 
   return (
     <div className='post'>
