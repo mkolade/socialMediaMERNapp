@@ -9,7 +9,7 @@ export default function Feed({username}) {
   useEffect( () =>{
     const fetchPosts = async () =>{
       const res = username 
-      ? await axios.get("http://localhost:8000/api/post/timeline/all/648f413f9ea807a0c753e5ac") 
+      ? await axios.get("http://localhost:8000/api/post/profile/" + username) 
       : await axios.get("http://localhost:8000/api/post/timeline/all/648f413f9ea807a0c753e5ac");
       setPosts(res.data)
     }
