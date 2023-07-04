@@ -3,6 +3,7 @@ import {MoreVert} from '@mui/icons-material'
 import { Users } from '../dummyData'
 import axios from 'axios'
 import noAvatar from '../assets/person/noAvatar.png'
+import {format} from 'timeago.js'
 
 export default function Post({post}) {
 
