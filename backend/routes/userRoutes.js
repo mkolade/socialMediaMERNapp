@@ -12,7 +12,7 @@ router.put("/:id",updateUser)
 router.delete("/:id",deleteUser)
 
 //get a single user
-router.get("/:id",getSingleUser)
+router.get("/",getSingleUser)
 
 //follow a user
 router.put("/:id/follow",followUser)
