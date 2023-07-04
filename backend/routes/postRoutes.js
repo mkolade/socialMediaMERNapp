@@ -1,6 +1,6 @@
 const router = require('express').Router()
 const {
-    createPost,updatePost,deletePost,likeDisLikePost,getPost,timelinePost
+    createPost,updatePost,deletePost,likeDisLikePost,getPost,timelinePost,getAllUserPosts
 } = require('../controllers/postController')
 
 //create a post
@@ -20,5 +20,8 @@ router.get('/:id', getPost)
 
 //get timeline posts
 router.get('/timeline/all/:userId',timelinePost )
+
+//get all user posts for profile
+router.get('/profile/:username',getAllUserPosts )
 
 module.exports = router

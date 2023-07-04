@@ -87,6 +87,27 @@ const timelinePost = async (req,res) =>{
     }
 }
 
+//get all user posts for profile
+const getAllUserPosts = async (req,res) =>{
+    try{
+        const currentUser = await User.findById(req.params.userId)
+        if (!currentUser) {
+            return res.status(404).json('User not found');
+        }
+        const userPosts =await Post.find({userId: currentUser._id})
+        //map through all followers post to display them.Promise.all is used cause we are to use it anytime we are looping
+        const friendPosts = await Promise.all(
+            currentUser.following.map((friendId) =>{
+               return Post.find({userId: friendId})
+            })
+        )
+        res.status(200).json(userPosts.concat(...friendPosts))
+    }catch(err){
+        console.log(err)
+        res.status(500).json(err)
+    }
+}
+
 module.exports = {
-    createPost,updatePost,deletePost,likeDisLikePost,getPost,timelinePost
+    createPost,updatePost,deletePost,likeDisLikePost,getPost,timelinePost,getAllUserPosts
 }
