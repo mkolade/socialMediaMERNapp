@@ -4,6 +4,7 @@ import { Users } from '../dummyData'
 import axios from 'axios'
 import noAvatar from '../assets/person/noAvatar.png'
 import {format} from 'timeago.js'
+import { Link } from 'react-router-dom'
 
 export default function Post({post}) {
 
@@ -32,7 +33,9 @@ export default function Post({post}) {
       <div className="postWrapper">
         <div className="postTop">
           <div className="postTopLeft">
-            <img className='postProfileImg' src={user.profilePicture || noAvatar} alt="" />
+            <Link to={`/profile/${user.username}`}>
+              <img className='postProfileImg' src={user.profilePicture || noAvatar} alt="" />
+            </Link>
             <span className="postUsername">
               {user && user.username && user.username
                 .split(' ')
