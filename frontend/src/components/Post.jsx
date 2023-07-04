@@ -40,7 +40,7 @@ export default function Post({post}) {
                 .join(' ')
               }
             </span>
-            <span className="postDate">{post.date}</span>
+            <span className="postDate">{format(post.createdAt)}</span>
           </div>
           <div className="postTopRight">
             <MoreVert/>
