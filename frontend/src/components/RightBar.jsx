@@ -35,15 +35,27 @@ export default function RightBar({user}) {
         <div className="profileRightbarInfo">
           <div className="profileRightbarInfoItem">
             <span className="profileRightbarInfoKey">City :</span>
-            <span className="profileRightbarInfoValue">{user.from}</span>
+            <span className="profileRightbarInfoValue">
+              {user && user.city && user.city
+                .split(' ')
+                .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+                .join(' ')
+              }
+            </span>
           </div>
           <div className="profileRightbarInfoItem">
             <span className="profileRightbarInfoKey">From :</span>
-            <span className="profileRightbarInfoValue">Manchester</span>
+            <span className="profileRightbarInfoValue">
+              {user && user.from && user.from
+                .split(' ')
+                .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+                .join(' ')
+              }
+            </span>
           </div>
           <div className="profileRightbarInfoItem">
             <span className="profileRightbarInfoKey">Relationship Status :</span>
-            <span className="profileRightbarInfoValue">Complicated</span>
+            <span className="profileRightbarInfoValue">{user.relationship}</span>
           </div>
         </div>
 
