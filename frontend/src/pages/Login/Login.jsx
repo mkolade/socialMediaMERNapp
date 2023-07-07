@@ -9,7 +9,7 @@ export default function Login() {
 
   const handleSubmit = (e) =>{
     e.preventDefault()
-    console.log('clicked')
+    console.log(email.current.value,password.current.value)
   }
   return (
     <div className='login'>
@@ -32,6 +32,7 @@ export default function Login() {
                   type='password' 
                   required
                   className="loginInput" 
+                  minLength={'6'}
                   ref={password}
                 />
                 <button className="loginSubmit" type='submit'>Log in</button>
