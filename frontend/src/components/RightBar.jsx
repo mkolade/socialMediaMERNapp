@@ -1,7 +1,7 @@
 import React from 'react'
 import { Users } from '../dummyData'
 
-export default function RightBar({profile}) {
+export default function RightBar({user}) {
   const HomeRightbar = () =>{
     return (
       <>
@@ -35,7 +35,7 @@ export default function RightBar({profile}) {
         <div className="profileRightbarInfo">
           <div className="profileRightbarInfoItem">
             <span className="profileRightbarInfoKey">City :</span>
-            <span className="profileRightbarInfoValue">New york</span>
+            <span className="profileRightbarInfoValue">{user.from}</span>
           </div>
           <div className="profileRightbarInfoItem">
             <span className="profileRightbarInfoKey">From :</span>
@@ -63,7 +63,7 @@ export default function RightBar({profile}) {
   return (
     <div className='rightbar'>
       <div className="rightbarWrapper">
-        {profile ? <ProfileRightbar/> : <HomeRightbar/>}
+        {user ? <ProfileRightbar/> : <HomeRightbar/>}
       </div>
     </div>
   )
