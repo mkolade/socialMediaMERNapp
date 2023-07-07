@@ -4,8 +4,8 @@ import TopBar from '../../components/TopBar'
 import SideBar from '../../components/SideBar'
 import Feed from '../../components/Feed'
 import RightBar from '../../components/RightBar'
-import post3 from '../../assets/post/post3.jpeg'
-import person1 from '../../assets/person/person1.jpeg'
+import noAvatar from '../../assets/person/noAvatar.png'
+import noCover from '../../assets/person/noCover.png'
 import axios from 'axios'
 
 export default function Profile() {
@@ -27,8 +27,8 @@ export default function Profile() {
         <div className="profileRight">
           <div className="profileRightTop">
             <div className="profileCover">
-              <img className="profileCoverImg" src={post3} alt="" />
-              <img className="profileUserImg" src={person1} alt="" />
+              <img className="profileCoverImg" src={user.profilePicture || noCover} alt="" />
+              <img className="profileUserImg" src={user.coverPicture || noAvatar} alt="" />
             </div>
             <div className="profileInfo">
               <h4 className="profileName">
