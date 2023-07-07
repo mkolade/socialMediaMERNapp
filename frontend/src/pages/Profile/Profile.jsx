@@ -7,13 +7,16 @@ import RightBar from '../../components/RightBar'
 import noAvatar from '../../assets/person/noAvatar.png'
 import noCover from '../../assets/person/noCover.png'
 import axios from 'axios'
+import { useParams } from 'react-router-dom'
+
 
 export default function Profile() {
   const [user,setUser] = useState({})
+  const username = useParams().username
 
   useEffect( () =>{
     const fetchUser = async () =>{
-      const res = await axios.get(`http://localhost:8000/api/users/?username=john`);
+      const res = await axios.get(`http://localhost:8000/api/users/?username=${username}`);
       setUser(res.data)
     }
     fetchUser()
@@ -42,7 +45,7 @@ export default function Profile() {
             </div>
           </div>
           <div className="profileRightBottom">
-            <Feed username={'john'}/>
+            <Feed username={username}/>
             <RightBar user = {user}/>
           </div>
         </div>
