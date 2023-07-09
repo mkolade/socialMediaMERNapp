@@ -1,16 +1,19 @@
-import { useRef } from 'react'
+import { useContext, useRef } from 'react'
 import './Login.css'
 import { loginCall } from '../../apiCalls'
+import { AuthContext } from '../../context/AuthContext'
 
 export default function Login() {
 
   const email = useRef()
   const password = useRef()
+  const {user,isFetching,error,dispatch} = useContext(AuthContext)
 
   const handleSubmit = (e) =>{
     e.preventDefault()
-    console.log(email.current.value,password.current.value)
+    loginCall({email,password},dispatch)
   }
+  console.log(user)
   return (
     <div className='login'>
       <div className="loginWrapper">
