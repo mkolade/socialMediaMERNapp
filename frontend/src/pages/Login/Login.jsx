@@ -2,6 +2,7 @@ import { useContext, useRef } from 'react'
 import './Login.css'
 import { loginCall } from '../../apiCalls'
 import { AuthContext } from '../../context/AuthContext'
+import  CircularProgress from '@mui/material/CircularProgress'
 
 export default function Login() {
 
@@ -38,9 +39,13 @@ export default function Login() {
                   minLength={'6'}
                   ref={password}
                 />
-                <button className="loginSubmit" type='submit'>{isFetching ? "Loading..." : "Log in"}</button>
+                <button className="loginSubmit" type='submit' disabled={isFetching}>
+                  {isFetching ? <CircularProgress color="inherit"  size='15px'/> : "Log in"}
+                </button>
                 <span className="loginForgot">Forgot Password?</span>
-                <button className="loginCreateNew">Create new account</button>
+                <button className="loginCreateNew">
+                  {isFetching ? <CircularProgress color="inherit"  size='15px'/> : "Create new account"}
+                </button>
             </form>
         </div>
       </div>
