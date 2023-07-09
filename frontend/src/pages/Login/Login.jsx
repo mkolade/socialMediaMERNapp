@@ -11,7 +11,7 @@ export default function Login() {
 
   const handleSubmit = (e) =>{
     e.preventDefault()
-    loginCall({email,password},dispatch)
+    loginCall({email:email.current.value,password:password.current.value},dispatch)
   }
   console.log(user)
   return (
@@ -38,7 +38,7 @@ export default function Login() {
                   minLength={'6'}
                   ref={password}
                 />
-                <button className="loginSubmit" type='submit'>Log in</button>
+                <button className="loginSubmit" type='submit'>{isFetching ? "Loading..." : "Log in"}</button>
                 <span className="loginForgot">Forgot Password?</span>
                 <button className="loginCreateNew">Create new account</button>
             </form>
