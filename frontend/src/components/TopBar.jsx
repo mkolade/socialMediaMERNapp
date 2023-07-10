@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import {Search,Person,Chat,Notifications} from '@mui/icons-material'
 import { Link } from 'react-router-dom'
 import { AuthContext } from '../context/AuthContext'
+import noAvatar from '../assets/person/noAvatar.png'
 
 export default function TopBar() {
 
@@ -50,7 +51,7 @@ export default function TopBar() {
 
         </div>
         <Link to={`/profile/${user.username}`}>
-          <img src={user.profilePicture} alt="" className="topbarImg" />
+          <img src={user.profilePicture || noAvatar} alt="" className="topbarImg" />
         </Link>
       </div>
     </div>
