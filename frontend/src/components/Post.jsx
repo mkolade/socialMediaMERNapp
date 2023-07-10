@@ -1,9 +1,10 @@
-import React, { useState,useEffect } from 'react'
+import React, { useState,useEffect, useContext } from 'react'
 import {MoreVert} from '@mui/icons-material'
 import axios from 'axios'
 import noAvatar from '../assets/person/noAvatar.png'
 import {format} from 'timeago.js'
 import { Link } from 'react-router-dom'
+import { AuthContext } from '../context/AuthContext'
 
 export default function Post({post}) {
 
@@ -11,14 +12,12 @@ export default function Post({post}) {
   {/* ask chatgpt to explain this part indepth */}
   /* const postOwner = Users.filter((user) => user.id === post.userId)[0]
  */
-  const [like,setLike] = useState(post.likes.length)
-  const [isLiked,setIsLiked] = useState(false)
-  const handleLike = () =>{
-    setLike(isLiked ? like - 1 : like + 1)
-    setIsLiked(!isLiked)
-  }
 
   const [user,setUser] = useState({})
+  const {user:currentUser} = useContext(AuthContext)
+  const [like,setLike] = useState(post.likes.length)
+  const [isLiked,setIsLiked] = useState(false)
+
   useEffect( () =>{
     const fetchUser = async () =>{
       const res = await axios.get(`http://localhost:8000/api/users/?userId=${post.userId}`);
@@ -26,6 +25,24 @@ export default function Post({post}) {
     }
     fetchUser()
   },[post.userId])
+
+  useEffect(() =>{
+    setIsLiked(post.likes.includes(currentUser._id))
+  },[currentUser._id])
+
+ 
+  const handleLike = async () =>{
+    try{
+      const res = await axios.put(`http://localhost:8000/api/post/` + post._id + '/like' ,{userId:currentUser._id})
+      console.log(res.data)
+    }catch(err){
+      console.log(err)
+    }
+    setLike(isLiked ? like - 1 : like + 1)
+    setIsLiked(!isLiked)
+  }
+
+  
 
   return (
     <div className='post'>
