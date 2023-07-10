@@ -2,12 +2,15 @@ import { useRef } from 'react'
 import './Register.css'
 import  CircularProgress from '@mui/material/CircularProgress'
 import axios from 'axios'
+import { useNavigate  } from 'react-router-dom'
 
 export default function Register() {
     const email = useRef()
     const username = useRef()
     const password = useRef()
     const passwordAgain = useRef()
+
+    const navigate = useNavigate()
 
     const handleSubmit = async (e) =>{
         e.preventDefault()
@@ -20,10 +23,11 @@ export default function Register() {
                 password: password.current.value
             }
             try{
-                await axios.post('http://localhost:8000/api/auth/register',user)
+               await axios.post('http://localhost:8000/api/auth/register',user)
                 console.log('user created')
+                navigate('/login')
             }catch(err){
-                console.log(err)
+                console.log(err.response.data.message)
             }
         }
     }

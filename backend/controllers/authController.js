@@ -17,7 +17,8 @@ const register = async (req,res) => {
         //check if user exists
         const checkUser = await User.findOne({email:req.body.email})
         if(checkUser){
-            return res.status(405).json('email already exists')
+            return res.status(405).json({message:'email already exists'})
+            /* throw Error('email already exists'); */
         }
         //save user to db and send response
         const user = await newUser.save()
