@@ -13,7 +13,7 @@ function App() {
     <Router>
       <div>
         <Routes>
-          <Route exact path={'/'} element={user ? <HomePage/> : <Register/> }/>
+          <Route exact path={'/'} element={user ? <HomePage/> : <Login/> }/>
           <Route 
             path={'/profile/:username'} 
             element={<Profile/>}    
