@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useRef, useState } from 'react'
 import {PermMedia,Label,Room,EmojiEmotions} from '@mui/icons-material'
 import noAvatar from '../assets/person/noAvatar.png'
 import { AuthContext } from '../context/AuthContext'
@@ -6,21 +6,32 @@ import { AuthContext } from '../context/AuthContext'
 export default function Share() {
 
   const {user} = useContext(AuthContext)
+  /* const desc = useRef(desc) */
+  const [file,setFile] = useState('')
+
+  const handleSubmit = async () =>{
+
+  }
 
   return (
     <div className='share'>
       <div className="shareWrapper">
         <div className="shareTop">
             <img src={user.profilePicture ? user.profilePicture : noAvatar} alt="" className='shareProfileImg'/>
-            <input placeholder={'What`s on your mind ' + user.username} className='shareInput' />
+            <input 
+              placeholder={'What`s on your mind ' + user.username} 
+              className='shareInput' 
+              
+            />
         </div>
         <hr className='shareHr'/>
-        <form className="shareBottom">
+        <form className="shareBottom" onSubmit={handleSubmit}>
             <div className="shareOptions">
-                <div className="shareOption">
+                <label htmlFor='file' className="shareOption">
                     <PermMedia htmlColor='tomato' className='shareOptionIcon'/>
                     <span className='shareOptionText'>Photo or video</span>
-                </div>
+                    <input type="file" style={{display:"none"}} name="" accept='.png,.jpeg,.jpg' id="file" onClick={(e) =>setFile(e.target.files[0])} />
+                </label>
                 <div className="shareOption">
                     <Label htmlColor='blue' className='shareOptionIcon'/>
                     <span className='shareOptionText'>Tag</span>
@@ -34,7 +45,7 @@ export default function Share() {
                     <span className='shareOptionText'>Feeling</span>
                 </div>
             </div>
-            <button className="shareButton">Share</button>
+            <button className="shareButton" type='submit'>Share</button>
         </form>
       </div>
     </div>
