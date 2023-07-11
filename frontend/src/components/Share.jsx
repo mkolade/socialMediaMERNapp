@@ -2,15 +2,28 @@ import React, { useContext, useRef, useState } from 'react'
 import {PermMedia,Label,Room,EmojiEmotions} from '@mui/icons-material'
 import noAvatar from '../assets/person/noAvatar.png'
 import { AuthContext } from '../context/AuthContext'
+import axios from 'axios'
 
 export default function Share() {
 
   const {user} = useContext(AuthContext)
-  /* const desc = useRef(desc) */
+  const desc = useRef()
   const [file,setFile] = useState('')
+  
 
-  const handleSubmit = async () =>{
+  const handleSubmit = async (e) =>{
+    e.preventDefault()
+    const newPost ={
+      userId:user._id,
+      desc:desc.current.value
+    }
 
+    try{
+      const res = await axios.post('http://localhost:8000/api/post/',newPost)
+      console.log('post uploaded successfully')
+    }catch(err){
+      console.log(err,res)
+    }
   }
 
   return (
@@ -21,7 +34,7 @@ export default function Share() {
             <input 
               placeholder={'What`s on your mind ' + user.username} 
               className='shareInput' 
-              
+              ref={desc}
             />
         </div>
         <hr className='shareHr'/>
