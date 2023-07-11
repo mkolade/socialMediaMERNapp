@@ -12,10 +12,10 @@ export default function Share() {
       <div className="shareWrapper">
         <div className="shareTop">
             <img src={user.profilePicture ? user.profilePicture : noAvatar} alt="" className='shareProfileImg'/>
-            <input placeholder='What`s on your mind' className='shareInput' />
+            <input placeholder={'What`s on your mind ' + user.username} className='shareInput' />
         </div>
         <hr className='shareHr'/>
-        <div className="shareBottom">
+        <form className="shareBottom">
             <div className="shareOptions">
                 <div className="shareOption">
                     <PermMedia htmlColor='tomato' className='shareOptionIcon'/>
@@ -35,7 +35,7 @@ export default function Share() {
                 </div>
             </div>
             <button className="shareButton">Share</button>
-        </div>
+        </form>
       </div>
     </div>
   )
