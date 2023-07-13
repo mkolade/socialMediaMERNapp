@@ -5,6 +5,8 @@ const helmet = require('helmet')
 const dotenv = require('dotenv')
 const  morgan = require('morgan')
 const cors = require('cors')
+const multer = require('multer')
+
 const userRoutes = require('./routes/userRoutes')
 const authRoutes = require('./routes/authRoutes')
 const postRoutes = require('./routes/postRoutes')
@@ -34,6 +36,24 @@ app.use(express.json());
 app.use(morgan('common'));
 app.use(helmet());
 app.use(cors());
+
+const storage = multer.diskStorage({
+    destination:(req,file,cb) =>{
+        cb(null,"public/images");
+    },
+    filename:(req,file,cb) =>{
+        cb(null,req.body.name)
+    }
+})
+const upload = multer({storage})
+
+app.post('/api/upload',upload.single("file"),(req,res) =>{
+    try{
+        return res.status(200).json({message:"File upload successful"})
+    }catch(err){
+        console.log(err)
+    }
+})
 
 //routes
 app.use('/api/users',userRoutes)
