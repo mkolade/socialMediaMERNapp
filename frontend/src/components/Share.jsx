@@ -25,6 +25,7 @@ export default function Share() {
       console.log(err,res)
     }
   }
+  
 
   return (
     <div className='share'>
