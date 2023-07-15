@@ -37,7 +37,6 @@ app.use(express.json());
 app.use(morgan('common'));
 app.use(helmet());
 app.use(cors());
-/* app.use("/images",express.static(path)) */
 
 const storage = multer.diskStorage({
     destination:(req,file,cb) =>{
@@ -61,3 +60,4 @@ app.post('/api/upload',upload.single("file"),(req,res) =>{
 app.use('/api/users',userRoutes)
 app.use('/api/auth',authRoutes)
 app.use('/api/post',postRoutes)
+app.use("/images",express.static(path.join(__dirname,'public/images')))
