@@ -40,9 +40,10 @@ app.use(cors());
 
 const storage = multer.diskStorage({
     destination:(req,file,cb) =>{
-        cb(null,"public/images");
+        cb(null,path.resolve(__dirname,"public/images/post") )
     },
     filename:(req,file,cb) =>{
+        console.log(req.body.name)
         cb(null,file.originalname)
     }
 })
@@ -60,7 +61,7 @@ app.post('/api/upload',upload.single("file"),(req,res) =>{
 app.use('/api/users',userRoutes)
 app.use('/api/auth',authRoutes)
 app.use('/api/post',postRoutes)
-app.use("/images", (req,res,next) =>{
+app.use("/images/post", (req,res,next) =>{
     res.setHeader("Cross-Origin-Resource-Policy", "same-site")
     next();
 },express.static(path.join(__dirname,'public/images')))

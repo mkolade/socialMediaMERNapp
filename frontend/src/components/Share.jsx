@@ -3,7 +3,6 @@ import {PermMedia,Label,Room,EmojiEmotions} from '@mui/icons-material'
 import noAvatar from '/assets/person/noAvatar.png'
 import { AuthContext } from '../context/AuthContext'
 import axios from 'axios'
-import cors from 'cors'
 
 export default function Share() {
 
@@ -19,6 +18,18 @@ export default function Share() {
     const newPost ={
       userId:user._id,
       desc:desc.current.value
+    }
+    if(file){
+      const data = new FormData()
+      const fileName = Date.now() + file.name
+      data.append("file",file)
+      data.append("name",fileName)
+      newPost.img = fileName
+      try{
+        await axios.post('http://localhost:8000/api/upload',data)
+      }catch(err){
+        console.log(err)
+      }
     }
 
     try{
@@ -46,7 +57,7 @@ export default function Share() {
                 <label htmlFor='file' className="shareOption">
                     <PermMedia htmlColor='tomato' className='shareOptionIcon'/>
                     <span className='shareOptionText'>Photo or video</span>
-                    <input type="file" style={{display:"none"}} name="" accept='.png,.jpeg,.jpg' id="file" onClick={(e) =>setFile(e.target.files[0])} />
+                    <input type="file" style={{display:"none"}} name="file" accept='.png,.jpeg,.jpg' id="file" onClick={(e) =>setFile(e.target.files[0])} />
                 </label>
                 <div className="shareOption">
                     <Label htmlColor='blue' className='shareOptionIcon'/>
