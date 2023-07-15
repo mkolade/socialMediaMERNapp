@@ -14,6 +14,9 @@ export default function Profile() {
   const [user,setUser] = useState({})
   const username = useParams().username
 
+  const PF_PERSON = import.meta.env.VITE_PF_PERSON
+  const PF_POST = import.meta.env.VITE_PF_POST
+
   useEffect( () =>{
     const fetchUser = async () =>{
       const res = await axios.get(`http://localhost:8000/api/users/?username=${username}`);
@@ -30,8 +33,8 @@ export default function Profile() {
         <div className="profileRight">
           <div className="profileRightTop">
             <div className="profileCover">
-              <img className="profileCoverImg" src={user.profilePicture || noCover} alt="" />
-              <img className="profileUserImg" src={user.coverPicture || noAvatar} alt="" />
+              <img className="profileCoverImg" src={user.profilePicture ? PF_PERSON + user.profilePicture : noCover} alt="" />
+              <img className="profileUserImg" src={user.coverPicture ? PF_POST + user.coverPicture : noAvatar} alt="" />
             </div>
             <div className="profileInfo">
               <h4 className="profileName">

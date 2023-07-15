@@ -6,6 +6,8 @@ import axios from 'axios'
 
 export default function Share() {
 
+  const PF_PERSON = import.meta.env.VITE_PF_PERSON
+
   const {user} = useContext(AuthContext)
   const desc = useRef()
   const [file,setFile] = useState('')
@@ -21,18 +23,16 @@ export default function Share() {
     try{
       const res = await axios.post('http://localhost:8000/api/post/',newPost)
       console.log('post uploaded successfully')
-      console.log(import.meta.env.VITE_PORT_NUMBER)
     }catch(err){
       console.log(err,res)
     }
   }
-  
 
   return (
     <div className='share'>
       <div className="shareWrapper">
         <div className="shareTop">
-            <img src={user.profilePicture ? user.profilePicture : noAvatar} alt="" className='shareProfileImg'/>
+            <img src={ user.profilePicture ? PF_PERSON + user.profilePicture : noAvatar}  alt="" className='shareProfileImg'/>
             <input 
               placeholder={'What`s on your mind ' + user.username} 
               className='shareInput' 

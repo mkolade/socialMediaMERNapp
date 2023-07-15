@@ -7,6 +7,7 @@ import noAvatar from '../assets/person/noAvatar.png'
 export default function TopBar() {
 
   const {user} = useContext(AuthContext)
+  const PF_PERSON = import.meta.env.VITE_PF_PERSON
 
   return (
     <div className='topbarContainer'>
@@ -51,7 +52,7 @@ export default function TopBar() {
 
         </div>
         <Link to={`/profile/${user.username}`}>
-          <img src={user.profilePicture || noAvatar} alt="" className="topbarImg" />
+          <img src={user.profilePicture ?PF_PERSON + user.profilePicture : noAvatar} alt="" className="topbarImg" />
         </Link>
       </div>
     </div>

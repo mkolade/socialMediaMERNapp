@@ -13,6 +13,9 @@ export default function Post({post}) {
   /* const postOwner = Users.filter((user) => user.id === post.userId)[0]
  */
 
+  const PF_PERSON = import.meta.env.VITE_PF_PERSON
+  const PF_POST = import.meta.env.VITE_PF_POST
+
   const [user,setUser] = useState({})
   const {user:currentUser} = useContext(AuthContext)
   const [like,setLike] = useState(post.likes.length)
@@ -50,7 +53,7 @@ export default function Post({post}) {
         <div className="postTop">
           <div className="postTopLeft">
             <Link to={`/profile/${user.username}`}>
-              <img className='postProfileImg' src={user.profilePicture || noAvatar} alt="" />
+              <img className='postProfileImg' src={user.profilePicture ? PF_PERSON + user.profilePicture : noAvatar} alt="" />
             </Link>
             <span className="postUsername">
               {user && user.username && user.username
@@ -67,7 +70,7 @@ export default function Post({post}) {
         </div>
         <div className="postMiddle">
           <span className="postText">{post.desc}</span>
-          <img src={`/src/assets/post/${post.img}`} alt="" className="postMainImg" />
+          <img src={PF_POST + post.img} alt="" className="postMainImg" />
         </div>
         <div className="postBottom">
           <div className="postBottomLeft">
