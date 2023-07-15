@@ -60,4 +60,7 @@ app.post('/api/upload',upload.single("file"),(req,res) =>{
 app.use('/api/users',userRoutes)
 app.use('/api/auth',authRoutes)
 app.use('/api/post',postRoutes)
-app.use("/images",express.static(path.join(__dirname,'public/images')))
+app.use("/images", (req,res,next) =>{
+    res.setHeader("Cross-Origin-Resource-Policy", "same-site")
+    next();
+},express.static(path.join(__dirname,'public/images')))

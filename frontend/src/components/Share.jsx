@@ -3,6 +3,7 @@ import {PermMedia,Label,Room,EmojiEmotions} from '@mui/icons-material'
 import noAvatar from '/assets/person/noAvatar.png'
 import { AuthContext } from '../context/AuthContext'
 import axios from 'axios'
+import cors from 'cors'
 
 export default function Share() {
 
