@@ -21,7 +21,7 @@ export default function Share() {
     try{
       const res = await axios.post('http://localhost:8000/api/post/',newPost)
       console.log('post uploaded successfully')
-      console.log(process.env.PORT_NUMBER)
+      console.log(import.meta.env.VITE_PORT_NUMBER)
     }catch(err){
       console.log(err,res)
     }
