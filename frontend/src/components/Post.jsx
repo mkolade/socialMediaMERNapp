@@ -1,7 +1,7 @@
 import React, { useState,useEffect, useContext } from 'react'
 import {MoreVert} from '@mui/icons-material'
 import axios from 'axios'
-import noAvatar from '../assets/person/noAvatar.png'
+import noAvatar from '/assets/person/noAvatar.png'
 import {format} from 'timeago.js'
 import { Link } from 'react-router-dom'
 import { AuthContext } from '../context/AuthContext'
@@ -74,8 +74,8 @@ export default function Post({post}) {
         </div>
         <div className="postBottom">
           <div className="postBottomLeft">
-            <img className='postLikeIcon' src="/src/assets/like.png" onClick={handleLike} alt="" />
-            <img className='postLikeIcon' src="/src/assets/heart.png" onClick={handleLike} alt="" />
+            <img className='postLikeIcon' src="/assets/like.png" onClick={handleLike} alt="" />
+            <img className='postLikeIcon' src="/assets/heart.png" onClick={handleLike} alt="" />
             <span className="postLikeCounter">{like} people liked it</span>
           </div>
           <div className="postBottomRight">

@@ -6,12 +6,12 @@ export default function RightBar({user}) {
     return (
       <>
         <div className="birthdayContainer">
-          <img src="/src/assets/gift.png" alt="" className="birthdayImg" />
+          <img src="/assets/gift.png" alt="" className="birthdayImg" />
           <span className="birthdayText">
             <b>Chelsea Scott</b> and <b>3 other friends</b> have a birthday today
           </span>
         </div>
-        <img src="src/assets/ad.png" alt="" className="rightbarAds" />
+        <img src="/assets/ad.png" alt="" className="rightbarAds" />
         <h4 className="rightbarTitle">Online friends</h4>
         <ul className="onlineFriendsList">
           {Users.map(user =>(

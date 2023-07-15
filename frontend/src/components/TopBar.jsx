@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import {Search,Person,Chat,Notifications} from '@mui/icons-material'
 import { Link } from 'react-router-dom'
 import { AuthContext } from '../context/AuthContext'
-import noAvatar from '../assets/person/noAvatar.png'
+import noAvatar from '/assets/person/noAvatar.png'
 
 export default function TopBar() {
 
