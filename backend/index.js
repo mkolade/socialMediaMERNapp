@@ -43,11 +43,9 @@ const storage = multer.diskStorage({
         cb(null,"public/images/post")
     },
     filename:(req,file,cb) =>{
-        const newFileName = Date.now() + file.originalname
-        console.log(newFileName)
         console.log(req.query.filename)
         console.log(req.path)
-        cb(null,newFileName)
+        cb(null,req.query.filename)
     }
 })
 const upload = multer({storage})

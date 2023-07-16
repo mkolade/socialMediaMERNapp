@@ -22,16 +22,17 @@ export default function Share() {
     if(file){
       console.log("File: ",file)
       const data = new FormData()
-      const fileName = Date.now() + file.name
+      const random = Math.floor(Math.random() * 10000);
+      const fileName = `${random}-${file.name}`;
       data.append("file",file)
       data.append("name",fileName)
       newPost.img = fileName
       // Iterate over the FormData entries to log the appended values
-  for (let pair of data.entries()) {
-    console.log(pair[0], pair[1]);
-  }
+      for (let pair of data.entries()) {
+        console.log(pair[0], pair[1]);
+      }
       try{
-        await axios.post(`http://localhost:8000/api/upload/?filename=${fileName}`,data)
+        await axios.post(`http://localhost:8000/api/upload/?filename=${encodeURIComponent(fileName)}`,data)
         console.log('file sent')
       }catch(err){
         console.log(err)
@@ -65,7 +66,7 @@ export default function Share() {
                 <label htmlFor='file' className="shareOption">
                     <PermMedia htmlColor='tomato' className='shareOptionIcon'/>
                     <span className='shareOptionText'>Photo or video</span>
-                    <input type="file" style={{display:"none"}} name="file" accept='.png,.jpeg,.jpg' id="file" onClick={(e) =>setFile(e.target.files[0])} />
+                    <input type="file" style={{display:"none"}} name="file" accept='.png,.jpeg,.jpg' id="file" onChange={(e) =>setFile(e.target.files[0])} />
                 </label>
                 <div className="shareOption">
                     <Label htmlColor='blue' className='shareOptionIcon'/>
