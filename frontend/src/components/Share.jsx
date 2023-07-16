@@ -32,6 +32,8 @@ export default function Share() {
       }catch(err){
         console.log(err)
       }
+    }else{
+      console.log('no file to send')
     }
 
     try{
