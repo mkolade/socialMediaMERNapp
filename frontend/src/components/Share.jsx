@@ -26,8 +26,12 @@ export default function Share() {
       data.append("file",file)
       data.append("name",fileName)
       newPost.img = fileName
+      // Iterate over the FormData entries to log the appended values
+  for (let pair of data.entries()) {
+    console.log(pair[0], pair[1]);
+  }
       try{
-        await axios.post('http://localhost:8000/api/upload',data)
+        await axios.post(`http://localhost:8000/api/upload/?filename=${fileName}`,data)
         console.log('file sent')
       }catch(err){
         console.log(err)
