@@ -43,7 +43,6 @@ const storage = multer.diskStorage({
         cb(null,path.resolve(__dirname,"public/images/post") )
     },
     filename:(req,file,cb) =>{
-        console.log(req.body.name)
         cb(null,file.originalname)
     }
 })
