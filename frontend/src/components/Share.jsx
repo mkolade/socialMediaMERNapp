@@ -20,6 +20,7 @@ export default function Share() {
       desc:desc.current.value
     }
     if(file){
+      console.log("File: ",file)
       const data = new FormData()
       const fileName = Date.now() + file.name
       data.append("file",file)
