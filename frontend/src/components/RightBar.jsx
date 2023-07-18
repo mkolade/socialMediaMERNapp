@@ -2,6 +2,8 @@ import React from 'react'
 import { Users } from '../dummyData'
 
 export default function RightBar({user}) {
+
+  
   const HomeRightbar = () =>{
     return (
       <>
@@ -29,6 +31,7 @@ export default function RightBar({user}) {
     )
   }
   const ProfileRightbar = () =>{
+    const PF_PERSON = import.meta.env.VITE_PF_PERSON
     return(
       <>
         <h4 className='profileRightbarTitle'>User information</h4>
@@ -61,13 +64,10 @@ export default function RightBar({user}) {
 
         <h4 className='profileRightbarTitle'>Following</h4>
         <div className="profileFollowings">
-          {Users.map((user) =>(
-            <div className="profileFollower" key={user.id}>
-              <img className='followerImg' src={user.profilePicture} alt="" />
-              <span className="followerName">{user.username}</span>
+            <div className="profileFollower" >
+              <img className='followerImg' src={PF_PERSON +  'person1.jpeg'} alt="" />
+              <span className="followerName">Linda Norton</span>
             </div>
-          ))}
-          
         </div>
       </>
     )
