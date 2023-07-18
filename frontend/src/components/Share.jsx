@@ -15,38 +15,43 @@ export default function Share() {
 
   const handleSubmit = async (e) =>{
     e.preventDefault()
-    const newPost ={
-      userId:user._id,
-      desc:desc.current.value
-    }
-    if(file){
-      console.log("File: ",file)
-      const data = new FormData()
-      const random = Math.floor(Math.random() * 10000);
-      const fileName = `${random}-${file.name}`;
-      data.append("file",file)
-      data.append("name",fileName)
-      newPost.img = fileName
-
-      /* // Iterate over the FormData entries to log the appended values
-      for (let pair of data.entries()) {
-        console.log(pair[0], pair[1]);
-      } */
-      
+    if(desc.current.value){
+      const newPost ={
+        userId:user._id,
+        desc:desc.current.value
+      }
+      if(file){
+        console.log("File: ",file)
+        const data = new FormData()
+        const random = Math.floor(Math.random() * 10000);
+        const fileName = `${random}-${file.name}`;
+        data.append("file",file)
+        data.append("name",fileName)
+        newPost.img = fileName
+  
+        /* // Iterate over the FormData entries to log the appended values
+        for (let pair of data.entries()) {
+          console.log(pair[0], pair[1]);
+        } */
+        
+        try{
+          await axios.post(`http://localhost:8000/api/upload/?filename=${encodeURIComponent(fileName)}`,data)
+        }catch(err){
+          console.log(err)
+        }
+      }
+  
       try{
-        await axios.post(`http://localhost:8000/api/upload/?filename=${encodeURIComponent(fileName)}`,data)
+        const res = await axios.post('http://localhost:8000/api/post/',newPost)
+        console.log('post uploaded successfully')
+        window.location.reload()
       }catch(err){
         console.log(err)
       }
+    }else{
+      console.log("no posts inputted")
     }
-
-    try{
-      const res = await axios.post('http://localhost:8000/api/post/',newPost)
-      console.log('post uploaded successfully')
-      window.location.reload()
-    }catch(err){
-      console.log(err)
-    }
+    
   }
 
   return (
