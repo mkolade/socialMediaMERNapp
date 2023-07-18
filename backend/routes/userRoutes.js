@@ -3,7 +3,9 @@ const {updateUser,
     deleteUser,
     getSingleUser,
     followUser,
-    unFollowUser} = require('../controllers/userController')
+    unFollowUser,
+    getAllFollowings
+} = require('../controllers/userController')
 
 //update user
 router.put("/:id",updateUser)
@@ -13,6 +15,9 @@ router.delete("/:id",deleteUser)
 
 //get a single user
 router.get("/",getSingleUser)
+
+//get all user followings
+router.get("/followings/:userId",getAllFollowings)
 
 //follow a user
 router.put("/:id/follow",followUser)

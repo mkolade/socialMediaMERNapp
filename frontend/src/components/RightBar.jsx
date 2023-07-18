@@ -1,8 +1,23 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Users } from '../dummyData'
+import axios from 'axios'
 
 export default function RightBar({user}) {
+  const PF_PERSON = import.meta.env.VITE_PF_PERSON
 
+  const [friends,setFriends] = useState([])
+
+  useEffect(() =>{
+    const getFriends = async() =>{
+      try{
+        const res = await axios.get('http://localhost:8000/api/users/followings/' + user._id)
+        setFriends(res.data)
+      }catch(err){
+        console.log(err)
+      }
+    }
+    getFriends()
+  },[user._id])
   
   const HomeRightbar = () =>{
     return (
@@ -31,7 +46,7 @@ export default function RightBar({user}) {
     )
   }
   const ProfileRightbar = () =>{
-    const PF_PERSON = import.meta.env.VITE_PF_PERSON
+    
     return(
       <>
         <h4 className='profileRightbarTitle'>User information</h4>
@@ -64,10 +79,12 @@ export default function RightBar({user}) {
 
         <h4 className='profileRightbarTitle'>Following</h4>
         <div className="profileFollowings">
-            <div className="profileFollower" >
-              <img className='followerImg' src={PF_PERSON +  'person1.jpeg'} alt="" />
-              <span className="followerName">Linda Norton</span>
-            </div>
+              {friends.map(friend =>{
+                <div className="profileFollower" >
+                  <img className='followerImg' src={ PF_PERSON +  'person1.jpeg'} alt="" />
+                  <span className="followerName">{friend.username}</span>
+                </div>
+              })}
         </div>
       </>
     )

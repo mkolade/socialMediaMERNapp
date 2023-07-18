@@ -58,6 +58,25 @@ const getSingleUser = async (req,res) =>{
     }
 }
 
+const getAllFollowings = async (req,res) =>{
+    try{
+        const user = await User.findById(req.params.userId)
+        const friends = await Promise.all(
+            user.following.map(friendId=>{
+                return User.findById(friendId) 
+            })
+        )
+        let friendDetails = []
+        friends.map(friend =>{
+            const {_id,username,profilePicture} = friend
+            friendDetails.push({_id,username,profilePicture})
+        })
+        res.status(200).json(friendDetails)
+    }catch(err){
+        res.status(500).json({message:"unable to get friends",err})
+    }
+}
+
 //follow a user
 const followUser = async (req,res) =>{
     if(req.body.userId !== req.params.id){
@@ -95,7 +114,7 @@ const unFollowUser = async (req,res) =>{
 
                 res.status(200).json("User has been successfully unfollowed")
             }else{
-                res.status(403).json("You dont follow this user")
+                res.status(403).json("You don't follow this user")
             }
 
         }catch(err){
@@ -111,5 +130,6 @@ module.exports = {
     deleteUser,
     getSingleUser,
     followUser,
-    unFollowUser
+    unFollowUser,
+    getAllFollowings
 }

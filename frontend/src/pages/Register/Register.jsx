@@ -15,7 +15,7 @@ export default function Register() {
     const handleSubmit = async (e) =>{
         e.preventDefault()
         if(passwordAgain.current.value !== password.current.value){
-            passwordAgain.current.setCustomValidity("Passwords dont match!")
+            passwordAgain.current.setCustomValidity("Passwords don't match!")
         }else{
             const user = {
                 email: email.current.value,
