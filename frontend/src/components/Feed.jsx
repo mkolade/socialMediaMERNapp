@@ -11,8 +11,8 @@ export default function Feed({username}) {
   useEffect( () =>{
     const fetchPosts = async () =>{
       const res = username 
-      ? await axios.get("http://localhost:8000/api/post/profile/" + username) 
-      : await axios.get("http://localhost:8000/api/post/timeline/all/" + user._id);
+        ? await axios.get("http://localhost:8000/api/post/profile/" + username) 
+        : await axios.get("http://localhost:8000/api/post/timeline/all/" + user._id);
       setPosts(res.data.sort((p1,p2) =>{
         return new Date(p2.createdAt) - new Date(p1.createdAt)
       }))
@@ -23,7 +23,7 @@ export default function Feed({username}) {
   return (
     <div className='feed'>
       <div className="feedWrapper">
-        <Share/>
+        {username === user.username && <Share/>}
         {posts.map((post) =>(
           <Post post = {post} key={post._id}/>
         ))}

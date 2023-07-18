@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { Users } from '../dummyData'
 import axios from 'axios'
+import noAvatar from '/assets/person/noAvatar.png'
+import {Link} from 'react-router-dom'
 
 export default function RightBar({user}) {
   const PF_PERSON = import.meta.env.VITE_PF_PERSON
@@ -79,12 +81,20 @@ export default function RightBar({user}) {
 
         <h4 className='profileRightbarTitle'>Following</h4>
         <div className="profileFollowings">
-              {friends.map(friend =>{
-                <div className="profileFollower" >
-                  <img className='followerImg' src={ PF_PERSON +  'person1.jpeg'} alt="" />
-                  <span className="followerName">{friend.username}</span>
-                </div>
-              })}
+              {friends.map(friend =>(
+                <Link to={'/profile/' + friend.username} style={{textDecoration:"none"}}>
+                  <div className="profileFollower" key={friend.userId}>
+                    <img className='followerImg' src={ friend.profilePicture ? PF_PERSON +  friend.profilePicture :noAvatar } alt="" />
+                    <span className="followerName">
+                      {friend && friend.username && friend.username
+                        .split(' ')
+                        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+                        .join(' ')
+                      }
+                  </span>
+                  </div>
+                </Link>
+              ))}
         </div>
       </>
     )

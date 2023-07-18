@@ -37,6 +37,7 @@
 }
 .followerName{
   width: 110px;
+  text-align: center;
 }
 .followerImg{
   margin-bottom: 5px;
