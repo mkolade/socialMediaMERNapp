@@ -32,7 +32,7 @@ export default function Share() {
       for (let pair of data.entries()) {
         console.log(pair[0], pair[1]);
       } */
-      s
+      
       try{
         await axios.post(`http://localhost:8000/api/upload/?filename=${encodeURIComponent(fileName)}`,data)
       }catch(err){
@@ -43,8 +43,9 @@ export default function Share() {
     try{
       const res = await axios.post('http://localhost:8000/api/post/',newPost)
       console.log('post uploaded successfully')
+      window.location.reload()
     }catch(err){
-      console.log(err,res)
+      console.log(err)
     }
   }
 
