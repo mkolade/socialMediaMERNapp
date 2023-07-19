@@ -4,13 +4,19 @@ import axios from 'axios'
 import noAvatar from '/assets/person/noAvatar.png'
 import {Link} from 'react-router-dom'
 import { AuthContext } from '../context/AuthContext'
-import {Add} from '@mui/icons-material'
+import {Add,Remove} from '@mui/icons-material'
 
 export default function RightBar({user}) {
   const PF_PERSON = import.meta.env.VITE_PF_PERSON
-  const {user:currentUser} = useContext(AuthContext)
+  const {user:currentUser,dispatch} = useContext(AuthContext)
 
   const [friends,setFriends] = useState([])
+  const [followed,setFollowed] = useState(currentUser.following.includes(user?._id))
+
+  useEffect(() =>{
+    setFollowed(currentUser.following.includes(user?._id))
+    console.log(currentUser.following)
+  },[user?.id,currentUser])
 
   useEffect(() =>{
     const getFriends = async() =>{
@@ -26,6 +32,28 @@ export default function RightBar({user}) {
     }
     getFriends()
   },[user?._id])
+
+  const handleFollow = async () =>{
+    try{
+      if(followed){
+        //unfollow user
+        await axios.put("http://localhost:8000/api/users/"+currentUser._id+"/unfollow",{
+          userId:user._id
+        })
+        dispatch({type:"UNFOLLOW",payload:user._id})
+      }else{
+         //follow user
+         await axios.put("http://localhost:8000/api/users/"+currentUser._id+"/follow",{
+          userId:user._id
+        })
+        dispatch({type:"FOLLOW",payload:user._id})
+      }
+      
+    }catch(err){
+      console.log(err)
+    }
+    setFollowed((prevFollowed) => !prevFollowed)
+  }
   
   const HomeRightbar = () =>{
     return (
@@ -57,8 +85,9 @@ export default function RightBar({user}) {
     return(
       <>
         {user.username !== currentUser.username &&
-          <button className="rightBarFollow">
-            Follow <Add/>
+          <button className="rightBarFollow" onClick={handleFollow}>
+            {followed ? "Unfollow" : "Follow"}
+            {followed ? <Remove/> : <Add/> }
           </button>
         }
         <h4 className='profileRightbarTitle'>User information</h4>

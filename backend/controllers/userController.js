@@ -88,9 +88,9 @@ const followUser = async (req,res) =>{
                 await userToFollow.updateOne({$push: {followers:req.body.userId}})
                 await currentUser.updateOne({$push: {following:req.params.id}})
 
-                res.status(200).json("User has been successfully followed")
+                res.status(200).json({message:"User has been successfully followed"})
             }else{
-                res.status(403).json("You already follow this user")
+                res.status(403).json({message:"You already follow this user"})
             }
 
         }catch(err){
@@ -112,9 +112,9 @@ const unFollowUser = async (req,res) =>{
                 await userToUnFollow.updateOne({$pull: {followers:req.body.userId}})
                 await currentUser.updateOne({$pull: {following:req.params.id}})
 
-                res.status(200).json("User has been successfully unfollowed")
+                res.status(200).json({message:"User has been successfully unfollowed"})
             }else{
-                res.status(403).json("You don't follow this user")
+                res.status(403).json({message:"You don't follow this user"})
             }
 
         }catch(err){

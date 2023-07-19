@@ -4,7 +4,23 @@
   font-family: 'Noto Sans', sans-serif;
   font-family: 'Roboto', sans-serif;
 }
-
+.rightBarFollow{
+  margin-top: 30px;
+  margin-bottom: 10px;
+  background: #1872f2;
+  border-radius: 5px;
+  border: none;
+  padding: 5px 10px;
+  color: white;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+.rightBarFollow:focus{
+  outline: none;
+}
 .profileRightbarTitle{
   font-size: 18px;
   font-weight: 600;
