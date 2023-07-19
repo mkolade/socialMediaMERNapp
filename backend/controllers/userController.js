@@ -63,7 +63,7 @@ const getAllFollowings = async (req,res) =>{
         const user = await User.findById(req.params.userId)
         const friends = await Promise.all(
             user.following.map(friendId=>{
-                return User.findById(friendId) 
+                return User.findById(friendId).catch(error => null)
             })
         )
         let friendDetails = []
@@ -73,7 +73,7 @@ const getAllFollowings = async (req,res) =>{
         })
         res.status(200).json(friendDetails)
     }catch(err){
-        res.status(500).json({message:"unable to get friends",err})
+        res.status(300).json({message:"unable to get friends",err})
     }
 }
 

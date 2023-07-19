@@ -11,6 +11,9 @@ export default function RightBar({user}) {
 
   useEffect(() =>{
     const getFriends = async() =>{
+      if (!user?._id) {
+        return;
+      }
       try{
         const res = await axios.get('http://localhost:8000/api/users/followings/' + user._id)
         setFriends(res.data)
@@ -19,7 +22,7 @@ export default function RightBar({user}) {
       }
     }
     getFriends()
-  },[user._id])
+  },[user?._id])
   
   const HomeRightbar = () =>{
     return (
@@ -48,6 +51,14 @@ export default function RightBar({user}) {
     )
   }
   const ProfileRightbar = () =>{
+    if(!user){
+      return null
+    }
+
+    if (typeof user.relationship === 'undefined') {
+      // If the user.relationship property is not defined or has an unexpected value, handle it
+      return null;
+    }
     
     return(
       <>
@@ -80,7 +91,8 @@ export default function RightBar({user}) {
         </div>
 
         <h4 className='profileRightbarTitle'>Following</h4>
-        <div className="profileFollowings">
+        {friends.length > 0 &&
+          <div className="profileFollowings">
               {friends.map(friend =>(
                 <Link to={'/profile/' + friend.username} style={{textDecoration:"none"}} key={friend._id}>
                   <div className="profileFollower" >
@@ -96,6 +108,8 @@ export default function RightBar({user}) {
                 </Link>
               ))}
         </div>
+        }
+        
       </>
     )
   }
