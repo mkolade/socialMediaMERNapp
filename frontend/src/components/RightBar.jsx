@@ -1,11 +1,14 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Users } from '../dummyData'
 import axios from 'axios'
 import noAvatar from '/assets/person/noAvatar.png'
 import {Link} from 'react-router-dom'
+import { AuthContext } from '../context/AuthContext'
+import {Add} from '@mui/icons-material'
 
 export default function RightBar({user}) {
   const PF_PERSON = import.meta.env.VITE_PF_PERSON
+  const {user:currentUser} = useContext(AuthContext)
 
   const [friends,setFriends] = useState([])
 
@@ -51,17 +54,13 @@ export default function RightBar({user}) {
     )
   }
   const ProfileRightbar = () =>{
-    if(!user){
-      return null
-    }
-
-    if (typeof user.relationship === 'undefined') {
-      // If the user.relationship property is not defined or has an unexpected value, handle it
-      return null;
-    }
-    
     return(
       <>
+        {user.username !== currentUser.username &&
+          <button className="rightBarFollow">
+            Follow <Add/>
+          </button>
+        }
         <h4 className='profileRightbarTitle'>User information</h4>
         <div className="profileRightbarInfo">
           <div className="profileRightbarInfoItem">
