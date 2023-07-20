@@ -40,7 +40,7 @@ app.use(helmet());
 app.use(cors());
 
 const storage = multer.diskStorage({
-    destination:(req,file,cb) =>{
+    destination:(req,cb) =>{
         cb(null,"public/images/post")
     },
     filename:(req,file,cb) =>{
