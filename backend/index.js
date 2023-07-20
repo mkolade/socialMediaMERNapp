@@ -3,6 +3,7 @@ const app = express()
 const mongoose = require('mongoose')
 const helmet = require('helmet')
 const dotenv = require('dotenv')
+
 const  morgan = require('morgan')
 const cors = require('cors')
 const multer = require('multer')
@@ -18,13 +19,13 @@ dotenv.config()
 //connecting to mongodb
 const connectToMongoDb = async () =>{
     try{
-        await mongoose.connect(process.env.MONGO_URL,{useNewUrlParser: true})
+        await mongoose.connect(process.env.MONGO_URL)
         console.log('Connected to db')
         app.listen(process.env.PORT || 4000,() =>{
             console.log('server ready on port ',process.env.PORT || 4000)
         })
     }catch(err){
-        console.log('Error connecting to db',err)
+        console.log('Error connecting to db', err)
     }
 }
 (async () => {
