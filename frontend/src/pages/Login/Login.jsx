@@ -54,6 +54,11 @@ export default function Login() {
                 <button className="loginCreateNew">
                   {isFetching ? <CircularProgress color="inherit"  size='15px'/> : "Create new account"}
                 </button>
+                {error && (
+                  <div className="loginError">
+                    {error.message}
+                  </div>
+                )}
             </form>
         </div>
       </div>

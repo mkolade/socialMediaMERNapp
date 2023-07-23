@@ -1,13 +1,20 @@
 import React, { useContext } from 'react'
 import {Search,Person,Chat,Notifications} from '@mui/icons-material'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../context/AuthContext'
 import noAvatar from '/assets/person/noAvatar.png'
 
 export default function TopBar() {
 
-  const {user} = useContext(AuthContext)
+  const {user,dispatch} = useContext(AuthContext)
   const PF_PERSON = import.meta.env.VITE_PF_PERSON
+  const navigate =useNavigate()
+
+  const handleLogout = () =>{
+    dispatch({type:"LOG_OUT"})
+    localStorage.removeItem("socialMediaUser")
+    navigate('/')
+  }
 
   return (
     <div className='topbarContainer'>
@@ -25,7 +32,7 @@ export default function TopBar() {
       <div className="topbarRight">
         <div className="topbarLinks">
           <Link to={'/'}><span className="topbarLink">Homepage</span></Link>
-          <span className="topbarLink">Timeline</span>
+          <span className="topbarLink" onClick={handleLogout}>LOG OUT</span>
         </div>
         <div className="topbarIcons">
         
