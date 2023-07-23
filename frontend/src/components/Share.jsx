@@ -7,6 +7,7 @@ import axios from 'axios'
 export default function Share() {
 
   const PF_PERSON = import.meta.env.VITE_PF_PERSON
+  const PF_SERVER = import.meta.env.VITE_PF_SERVER
 
   const {user} = useContext(AuthContext)
   const desc = useRef()
@@ -35,14 +36,14 @@ export default function Share() {
         } */
         
         try{
-          await axios.post(`http://localhost:8000/api/upload/?filename=${encodeURIComponent(fileName)}`,data)
+          await axios.post(PF_SERVER + `upload/?filename=${encodeURIComponent(fileName)}`,data)
         }catch(err){
           console.log(err)
         }
       }
   
       try{
-        const res = await axios.post('http://localhost:8000/api/post/',newPost)
+        const res = await axios.post(PF_SERVER + 'post/',newPost)
         console.log('post uploaded successfully')
         window.location.reload()
       }catch(err){

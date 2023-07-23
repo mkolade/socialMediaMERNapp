@@ -15,6 +15,7 @@ export default function Post({post}) {
 
   const PF_PERSON = import.meta.env.VITE_PF_PERSON
   const PF_POST = import.meta.env.VITE_PF_POST
+  const PF_SERVER = import.meta.env.VITE_PF_SERVER
 
   const [user,setUser] = useState({})
   const {user:currentUser} = useContext(AuthContext)
@@ -23,7 +24,7 @@ export default function Post({post}) {
 
   useEffect( () =>{
     const fetchUser = async () =>{
-      const res = await axios.get(`http://localhost:8000/api/users/?userId=${post.userId}`);
+      const res = await axios.get(PF_SERVER + `users/?userId=${post.userId}`);
       setUser(res.data)
     }
     fetchUser()
@@ -36,7 +37,7 @@ export default function Post({post}) {
  
   const handleLike = async () =>{
     try{
-      const res = await axios.put(`http://localhost:8000/api/post/` + post._id + '/like' ,{userId:currentUser._id})
+      const res = await axios.put(PF_SERVER + `post/` + post._id + '/like' ,{userId:currentUser._id})
       console.log(res.data)
     }catch(err){
       console.log(err)

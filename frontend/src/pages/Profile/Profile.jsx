@@ -16,10 +16,11 @@ export default function Profile() {
 
   const PF_PERSON = import.meta.env.VITE_PF_PERSON
   const PF_POST = import.meta.env.VITE_PF_POST
+  const PF_SERVER = import.meta.env.VITE_PF_SERVER
 
   useEffect( () =>{
     const fetchUser = async () =>{
-      const res = await axios.get(`http://localhost:8000/api/users/?username=${username}`);
+      const res = await axios.get(PF_SERVER `api/users/?username=${username}`);
       setUser(res.data)
     }
     fetchUser()

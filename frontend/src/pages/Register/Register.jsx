@@ -4,11 +4,14 @@ import  CircularProgress from '@mui/material/CircularProgress'
 import axios from 'axios'
 import { useNavigate  } from 'react-router-dom'
 
+
 export default function Register() {
     const email = useRef()
     const username = useRef()
     const password = useRef()
     const passwordAgain = useRef()
+
+    const PF_SERVER = import.meta.env.VITE_PF_SERVER
 
     const navigate = useNavigate()
 
@@ -23,7 +26,7 @@ export default function Register() {
                 password: password.current.value
             }
             try{
-               await axios.post('http://localhost:8000/api/auth/register',user)
+               await axios.post(PF_SERVER + '/auth/register',user)
                 console.log('user created')
                 navigate('/login')
             }catch(err){

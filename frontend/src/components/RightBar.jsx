@@ -8,6 +8,7 @@ import {Add,Remove} from '@mui/icons-material'
 
 export default function RightBar({user}) {
   const PF_PERSON = import.meta.env.VITE_PF_PERSON
+  const PF_SERVER = import.meta.env.VITE_PF_SERVER
   const {user:currentUser,dispatch} = useContext(AuthContext)
 
   const [friends,setFriends] = useState([])
@@ -23,7 +24,7 @@ export default function RightBar({user}) {
         return;
       }
       try{
-        const res = await axios.get('http://localhost:8000/api/users/followings/' + user._id)
+        const res = await axios.get(PF_SERVER + 'users/followings/' + user._id)
         setFriends(res.data)
       }catch(err){
         console.log(err)
@@ -36,13 +37,13 @@ export default function RightBar({user}) {
     try{
       if(followed){
         //unfollow user
-        await axios.put("http://localhost:8000/api/users/"+user._id+"/unfollow",{
+        await axios.put(PF_SERVER + "users/"+user._id+"/unfollow",{
           userId:currentUser._id
         })
         dispatch({type:"UNFOLLOW",payload:user._id})
       }else{
          //follow user
-         await axios.put("http://localhost:8000/api/users/"+user._id+"/follow",{
+         await axios.put(PF_SERVER + "users/"+user._id+"/follow",{
           userId:currentUser._id
         })
         dispatch({type:"FOLLOW",payload:user._id})
