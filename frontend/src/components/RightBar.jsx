@@ -37,14 +37,14 @@ export default function RightBar({user}) {
     try{
       if(followed){
         //unfollow user
-        await axios.put("http://localhost:8000/api/users/"+currentUser._id+"/unfollow",{
-          userId:user._id
+        await axios.put("http://localhost:8000/api/users/"+user._id+"/unfollow",{
+          userId:currentUser._id
         })
         dispatch({type:"UNFOLLOW",payload:user._id})
       }else{
          //follow user
-         await axios.put("http://localhost:8000/api/users/"+currentUser._id+"/follow",{
-          userId:user._id
+         await axios.put("http://localhost:8000/api/users/"+user._id+"/follow",{
+          userId:currentUser._id
         })
         dispatch({type:"FOLLOW",payload:user._id})
       }
