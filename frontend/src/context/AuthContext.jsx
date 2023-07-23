@@ -1,18 +1,13 @@
 import { createContext, useReducer } from "react";
 import  AuthReducer  from "./AuthReducer";
 
+// Check if user data exists in localStorage
+const storedUser = localStorage.getItem("socialMediaUser")
+  ? JSON.parse(localStorage.getItem("socialMediaUser"))
+  : null;
+
 const INITIAL_STATE = {
-    user:{
-        _id:"648f414f9ea807a0c753e5af",
-        username:"jane",
-        email:"jane@gmail.com",
-        password:"$2b$10$YlHagLxgfLNt0QESwlGF4.RfciDzQQganN4NM3Hrto8.ErHONCClK",
-        profilePicture:"person3.jpeg",
-        coverPicture:"post9.jpeg",
-        followers:[],
-        following:[],
-        isAdmin:false,
-    },
+    user:storedUser,
     isFetching:false,
     error:false
 }

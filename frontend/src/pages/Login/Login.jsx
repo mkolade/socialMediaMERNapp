@@ -1,4 +1,4 @@
-import { useContext, useRef } from 'react'
+import { useContext, useRef,useEffect } from 'react'
 import './Login.css'
 import { loginCall } from '../../apiCalls'
 import { AuthContext } from '../../context/AuthContext'
@@ -10,9 +10,18 @@ export default function Login() {
   const password = useRef()
   const {user,isFetching,error,dispatch} = useContext(AuthContext)
 
+  useEffect(() => {
+    // Check if user data is available in local storage
+    const userData = localStorage.getItem('socialMediaUser');
+    if (userData) {
+      dispatch({ type: 'LOGIN_SUCCESS', payload: JSON.parse(userData) });
+    }
+  }, [dispatch]);
+
   const handleSubmit = (e) =>{
     e.preventDefault()
     loginCall({email:email.current.value,password:password.current.value},dispatch)
+    
   }
   return (
     <div className='login'>
