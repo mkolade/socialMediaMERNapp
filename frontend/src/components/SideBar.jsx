@@ -44,7 +44,7 @@ export default function SideBar() {
           </li>
         </ul>
         <button className="sidebarButton">Show more</button>
-        <hr className="sidebareHr" />
+        <hr className="sidebarHr" />
         <ul className="sidebarFriendsList">
           {Users.map((user) =>(
             <li className="sidebarFriends" key={user.id}>
