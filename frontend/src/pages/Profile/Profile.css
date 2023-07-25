@@ -40,3 +40,18 @@
 .profileRightBottom{
     display: flex;
 }
+
+.detailsWrapper{
+    background: #1872f2;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.detailsForm{
+    background: white;
+    width: 80%;
+    height: 90vh;
+}

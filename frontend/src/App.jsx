@@ -5,6 +5,7 @@ import {BrowserRouter as Router, Routes,Route,Navigate } from "react-router-dom"
 import Register from "./pages/Register/Register"
 import { useContext } from "react"
 import { AuthContext } from "./context/AuthContext"
+import ProfileDetails from "./pages/Profile/ProfileDetails"
  
 
 function App() {
@@ -25,6 +26,10 @@ function App() {
           <Route 
             path={'/register'}  
             element={user ? <Navigate to={'/'} replace/> :<Register/>}
+          />
+           <Route 
+            path={'/profileDetails'}  
+            element={!user ? <Navigate to={'/'} replace/> :<ProfileDetails/>}
           />
         </Routes>
       </div>
