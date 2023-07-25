@@ -1,8 +1,9 @@
 import { useRef } from 'react'
 import './Register.css'
 import  CircularProgress from '@mui/material/CircularProgress'
+import swal from 'sweetalert'
 import axios from 'axios'
-import { useNavigate  } from 'react-router-dom'
+import { useNavigate,Link  } from 'react-router-dom'
 
 
 export default function Register() {
@@ -26,11 +27,17 @@ export default function Register() {
                 password: password.current.value
             }
             try{
-               await axios.post(PF_SERVER + '/auth/register',user)
+               await axios.post(PF_SERVER + 'auth/register',user)
                 console.log('user created')
                 navigate('/login')
             }catch(err){
-                console.log(err.response.data.message)
+                console.log(err)
+                swal({
+                    title: "Error!",
+                    text: err.response.data.message,
+                    icon: "error",
+                    button: "Enter details again",
+                });
             }
         }
     }
@@ -76,7 +83,9 @@ export default function Register() {
                             minLength={6}
                         />
                         <button className="registerSubmit" type='submit'>Sign up</button>
-                        <button className="registerCreateNew">Log into account</button>
+                        <Link to='/login' style={{textAlign:'center'}}>
+                            <button className="registerCreateNew">Log into account</button>
+                        </Link>
                     </form>
                 </div>
             </div>

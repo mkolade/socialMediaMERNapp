@@ -13,13 +13,20 @@ const register = async (req,res) => {
             email:req.body.email,
             password:encryptedPassword
         })
-        //use validator dependency to vaalidate email and password
+        //use validator dependency to validate email and password
         //check if user exists
         const checkUser = await User.findOne({email:req.body.email})
         if(checkUser){
             return res.status(405).json({message:'email already exists'})
             /* throw Error('email already exists'); */
         }
+
+        //check if username exists
+        const checkUserName = await User.findOne({username:req.body.username})
+        if(checkUserName){
+            return res.status(405).json({message:'username unavailable'})
+        }
+
         //save user to db and send response
         const user = await newUser.save()
         res.status(200).json(user)
