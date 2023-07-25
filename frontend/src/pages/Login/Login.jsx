@@ -3,7 +3,7 @@ import './Login.css'
 import { loginCall } from '../../apiCalls'
 import { AuthContext } from '../../context/AuthContext'
 import  CircularProgress from '@mui/material/CircularProgress'
-
+import Swal from 'sweetalert'
 export default function Login() {
 
   const email = useRef()
@@ -16,11 +16,25 @@ export default function Login() {
     if (userData) {
       dispatch({ type: 'LOGIN_SUCCESS', payload: JSON.parse(userData) });
     }
+    
   }, [dispatch]);
 
   const handleSubmit = (e) =>{
     e.preventDefault()
-    loginCall({email:email.current.value,password:password.current.value},dispatch)
+    try{
+      loginCall({email:email.current.value,password:password.current.value},dispatch)
+    }catch(err){
+      console.log(err)
+      if(err){
+        Swal.fire({
+          icon:'error',
+          title:'Oops ..',
+          text:err.message
+        })
+      }
+    }
+    
+    
   }
   return (
     <div className='login'>
@@ -32,10 +46,12 @@ export default function Login() {
         <div className="loginRight">
             <form className="loginForm" onSubmit={handleSubmit}>
             {error && (
-                  <div className="loginError">
-                    {error.message}
-                  </div>
-                )}
+              
+              <div>
+              {console.log(error.response.data.error)}
+                {error.response.data.error}
+              </div>
+            )}
                 <input 
                   placeholder="Email"
                   required
