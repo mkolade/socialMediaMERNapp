@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import './Register.css'
 import  CircularProgress from '@mui/material/CircularProgress'
 import swal from 'sweetalert'
@@ -13,13 +13,16 @@ export default function Register() {
     const passwordAgain = useRef()
 
     const PF_SERVER = import.meta.env.VITE_PF_SERVER
+    const [isFetching,setIsFetching] = useState(false)
 
     const navigate = useNavigate()
 
     const handleSubmit = async (e) =>{
         e.preventDefault()
+        setIsFetching(true)
         if(passwordAgain.current.value !== password.current.value){
             passwordAgain.current.setCustomValidity("Passwords don't match!")
+            setIsFetching(false)
         }else{
             const user = {
                 email: email.current.value,
@@ -30,14 +33,15 @@ export default function Register() {
                await axios.post(PF_SERVER + 'auth/register',user)
                 console.log('user created')
                 navigate('/login')
+                setIsFetching(false)
             }catch(err){
-                console.log(err)
                 swal({
                     title: "Error!",
                     text: err.response.data.message,
                     icon: "error",
                     button: "Enter details again",
                 });
+                setIsFetching(false)
             }
         }
     }
@@ -82,9 +86,13 @@ export default function Register() {
                             ref={passwordAgain}
                             minLength={6}
                         />
-                        <button className="registerSubmit" type='submit'>Sign up</button>
+                        <button className="registerSubmit" type='submit' disabled={isFetching}>
+                            {isFetching ? <CircularProgress color="inherit"  size='15px'/> : "Sign up"}
+                        </button>
                         <Link to='/login' style={{textAlign:'center'}}>
-                            <button className="registerCreateNew">Log into account</button>
+                            <button className="registerCreateNew" disabled={isFetching}>
+                                {isFetching ? <CircularProgress color="inherit"  size='15px'/> : "Log into account"}
+                            </button>
                         </Link>
                     </form>
                 </div>

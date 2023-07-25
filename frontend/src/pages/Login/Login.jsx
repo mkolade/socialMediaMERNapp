@@ -62,7 +62,7 @@ export default function Login() {
                 </button>
                 <span className="loginForgot">Forgot Password?</span>
                 <Link to='/register' style={{textAlign:'center'}}>
-                <button className="loginCreateNew">
+                <button className="loginCreateNew" disabled={isFetching}>
                   {isFetching ? <CircularProgress color="inherit"  size='15px'/> : "Create new account"}
                 </button>
                 </Link>
