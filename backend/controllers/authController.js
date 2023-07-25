@@ -34,13 +34,13 @@ const login = async (req,res) =>{
         //validate user email
         const user = await User.findOne({email:req.body.email})
          if(!user){
-          return  res.status(404).json({message:"user not found"})
+          return  res.status(404).json({error:"user not found"})
          }
         
         //validate user password
         const validPassword = await bcrypt.compare(req.body.password,user.password)
         if( !validPassword){
-            return res.status(400).json({message:"wrong password"})
+            return res.status(400).json({error:"wrong password"})
         }
 
         //if all validation checks is complete

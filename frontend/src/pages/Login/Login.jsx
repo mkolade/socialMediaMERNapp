@@ -21,7 +21,6 @@ export default function Login() {
   const handleSubmit = (e) =>{
     e.preventDefault()
     loginCall({email:email.current.value,password:password.current.value},dispatch)
-    
   }
   return (
     <div className='login'>
@@ -32,6 +31,11 @@ export default function Login() {
         </div>
         <div className="loginRight">
             <form className="loginForm" onSubmit={handleSubmit}>
+            {error && (
+                  <div className="loginError">
+                    {error.message}
+                  </div>
+                )}
                 <input 
                   placeholder="Email"
                   required
@@ -54,11 +58,7 @@ export default function Login() {
                 <button className="loginCreateNew">
                   {isFetching ? <CircularProgress color="inherit"  size='15px'/> : "Create new account"}
                 </button>
-                {error && (
-                  <div className="loginError">
-                    {error.message}
-                  </div>
-                )}
+                
             </form>
         </div>
       </div>
