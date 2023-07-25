@@ -3,7 +3,8 @@ import './Login.css'
 import { loginCall } from '../../apiCalls'
 import { AuthContext } from '../../context/AuthContext'
 import  CircularProgress from '@mui/material/CircularProgress'
-import Swal from 'sweetalert'
+import {Link} from 'react-router-dom'
+import swal from 'sweetalert'
 export default function Login() {
 
   const email = useRef()
@@ -21,19 +22,15 @@ export default function Login() {
 
   const handleSubmit = (e) =>{
     e.preventDefault()
-    try{
       loginCall({email:email.current.value,password:password.current.value},dispatch)
-    }catch(err){
-      console.log(err)
-      if(err){
-        Swal.fire({
-          icon:'error',
-          title:'Oops ..',
-          text:err.message
-        })
+      if(error){
+        swal({
+          title: "Error!",
+          text: error.response.data.error,
+          icon: "error",
+          button: "Enter details again",
+        });
       }
-    }
-    
     
   }
   return (
@@ -45,13 +42,6 @@ export default function Login() {
         </div>
         <div className="loginRight">
             <form className="loginForm" onSubmit={handleSubmit}>
-            {error && (
-              
-              <div>
-              {console.log(error.response.data.error)}
-                {error.response.data.error}
-              </div>
-            )}
                 <input 
                   placeholder="Email"
                   required
@@ -71,9 +61,12 @@ export default function Login() {
                   {isFetching ? <CircularProgress color="inherit"  size='15px'/> : "Log in"}
                 </button>
                 <span className="loginForgot">Forgot Password?</span>
+                <Link to=''>
                 <button className="loginCreateNew">
                   {isFetching ? <CircularProgress color="inherit"  size='15px'/> : "Create new account"}
                 </button>
+                </Link>
+                
                 
             </form>
         </div>
