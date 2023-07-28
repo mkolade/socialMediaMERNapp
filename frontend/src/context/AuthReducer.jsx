@@ -18,12 +18,7 @@ const AuthReducer = (state,action) =>{
                 isFetching:false,
                 error:action.payload
             } 
-        case "LOG_OUT":
-            return{
-                user:null,
-                isFetching:false,
-                error:false
-            }
+        
         case "FOLLOW":
             return{
                 ...state,
@@ -41,8 +36,17 @@ const AuthReducer = (state,action) =>{
                     following:state.user.following.filter((following0) => following0 !== action.payload)
                 }
             } 
+
+        case "LOG_OUT":
+            return{
+                user:null,
+                isFetching:false,
+                error:false
+            }
+
+
         default:
-            state  
+            return state  
     }
 }
 

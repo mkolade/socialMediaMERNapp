@@ -12,9 +12,10 @@ export const loginCall = async (userCredentials,dispatch) =>{
             username: res.data.username,
             email: res.data.email,
             password:res.data.password,
+            following:res.data.following
           };
         localStorage.setItem("socialMediaUser",JSON.stringify(userData))
-        
+        console.log(userData)
     }catch(err){
        
         dispatch({type:"LOGIN_FAILURE",payload:err})

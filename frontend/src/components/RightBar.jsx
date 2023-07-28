@@ -13,27 +13,21 @@ export default function RightBar({user}) {
   const {user:currentUser,dispatch} = useContext(AuthContext)
 
   const [friends,setFriends] = useState([])
-  const [followed,setFollowed] = useState(false)
+  const [followed,setFollowed] = useState(currentUser.following.includes(user?._id))
+
+ 
+  
 
   useEffect(() =>{
-    console.log(currentUser)
-    const getCurrentUserFriends = async() =>{
-      if (!currentUser?._id) {
-        return;
-      }
-      try{
-        const res = await axios.get(PF_SERVER + 'users/followings/' + currentUser._id)
-        const currentUserFollowings = res.data.map((friend) =>(
-          friend._id
-        ))
-        setFollowed(currentUserFollowings.includes(user?._id))
-      }catch(err){
-        console.log(err)
-      }
-    }
-    getCurrentUserFriends()
-   
-  },[currentUser,followed])
+        setFollowed(currentUser.following.includes(user?._id))
+        console.log(user)
+        console.log(currentUser.following)
+        if(currentUser.following.includes(user?._id)){
+          console.log('yes',user?.username)
+        }else{
+          console.log('no',user?.username)
+        }
+  },[currentUser,user])
 
   useEffect(() =>{
     const getFriends = async() =>{
@@ -65,11 +59,10 @@ export default function RightBar({user}) {
         })
         dispatch({type:"FOLLOW",payload:user._id})
       }
-      
+      setFollowed((prevFollowed) => !prevFollowed)
     }catch(err){
       console.log(err)
     }
-    setFollowed((prevFollowed) => !prevFollowed)
   }
   
   const HomeRightbar = () =>{
