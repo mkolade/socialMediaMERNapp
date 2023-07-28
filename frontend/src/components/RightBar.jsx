@@ -13,11 +13,9 @@ export default function RightBar({user}) {
   const {user:currentUser,dispatch} = useContext(AuthContext)
 
   const [friends,setFriends] = useState([])
-  const [currentUserFriends,setCurrentUserFriends] = useState([])
   const [followed,setFollowed] = useState(false)
 
   useEffect(() =>{
-    console.log(user.following)
     console.log(currentUser)
     const getCurrentUserFriends = async() =>{
       if (!currentUser?._id) {
@@ -28,15 +26,14 @@ export default function RightBar({user}) {
         const currentUserFollowings = res.data.map((friend) =>(
           friend._id
         ))
-        setCurrentUserFriends(currentUserFollowings)
-        console.log(currentUserFriends)
+        setFollowed(currentUserFollowings.includes(user?._id))
       }catch(err){
         console.log(err)
       }
     }
     getCurrentUserFriends()
    
-  },[currentUser])
+  },[currentUser,followed])
 
   useEffect(() =>{
     const getFriends = async() =>{
