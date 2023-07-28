@@ -14,7 +14,7 @@ export const loginCall = async (userCredentials,dispatch) =>{
             password:res.data.password,
             following:res.data.following
           };
-        localStorage.setItem("socialMediaUser",JSON.stringify(userData))
+        localStorage.setItem("socialMediaUser",JSON.stringify(res.data))
         console.log(userData)
     }catch(err){
        

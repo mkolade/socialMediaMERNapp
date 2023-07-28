@@ -27,7 +27,7 @@ function App() {
             path={'/register'}  
             element={user ? <Navigate to={'/'} replace/> :<Register/>}
           />
-           <Route 
+          <Route 
             path={'/profileDetails'}  
             element={!user ? <Navigate to={'/'} replace/> :<ProfileDetails/>}
           />
