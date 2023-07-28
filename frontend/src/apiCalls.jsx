@@ -7,7 +7,14 @@ export const loginCall = async (userCredentials,dispatch) =>{
     try{
         const res = await axios.post(PF_SERVER + 'auth/login',userCredentials)
         dispatch({type:"LOGIN_SUCCESS",payload:res.data})
-        localStorage.setItem("socialMediaUser",JSON.stringify(res.data))
+        const userData = {
+            _id: res.data._id,
+            username: res.data.username,
+            email: res.data.email,
+            password:res.data.password,
+          };
+        localStorage.setItem("socialMediaUser",JSON.stringify(userData))
+        
     }catch(err){
        
         dispatch({type:"LOGIN_FAILURE",payload:err})

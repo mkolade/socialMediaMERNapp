@@ -42,7 +42,6 @@
 }
 
 .detailsWrapper{
-    background: #1872f2;
     width: 100%;
     min-height: 100vh;
     display: flex;
@@ -52,6 +51,30 @@
 
 .detailsForm{
     background: white;
-    width: 80%;
-    height: 90vh;
+    -webkit-box-shadow:0px 0px 16px -8px rgba(0,0,0,0.68);
+    box-shadow:0px 0px 16px -8px rgba(0,0,0,0.68) ;
+    display: flex;
+    justify-content: center;
+    border: 5px solid black;
+    padding: 50px;
+}
+
+.mainForm{
+    display: block;
+}
+.detailsContainer{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    border: 3px solid black;
+    padding: 5px 9px;
+}
+
+.detailsInput{
+    border: 1.5px solid black;
+    padding: 5px;
+}
+
+.detailsInput:focus{
+    outline: none;
 }
