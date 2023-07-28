@@ -5,6 +5,7 @@ import noAvatar from '/assets/person/noAvatar.png'
 import {Link} from 'react-router-dom'
 import { AuthContext } from '../context/AuthContext'
 import {Add,Remove} from '@mui/icons-material'
+import { set } from 'mongoose'
 
 export default function RightBar({user}) {
   const PF_PERSON = import.meta.env.VITE_PF_PERSON
@@ -12,11 +13,30 @@ export default function RightBar({user}) {
   const {user:currentUser,dispatch} = useContext(AuthContext)
 
   const [friends,setFriends] = useState([])
-  const [followed,setFollowed] = useState(currentUser.following.includes(user?._id))
+  const [currentUserFriends,setCurrentUserFriends] = useState([])
+  const [followed,setFollowed] = useState(false)
 
   useEffect(() =>{
-    setFollowed(currentUser.following.includes(user?._id))
-  },[user])
+    console.log(user.following)
+    console.log(currentUser)
+    const getCurrentUserFriends = async() =>{
+      if (!currentUser?._id) {
+        return;
+      }
+      try{
+        const res = await axios.get(PF_SERVER + 'users/followings/' + currentUser._id)
+        const currentUserFollowings = res.data.map((friend) =>(
+          friend._id
+        ))
+        setCurrentUserFriends(currentUserFollowings)
+        console.log(currentUserFriends)
+      }catch(err){
+        console.log(err)
+      }
+    }
+    getCurrentUserFriends()
+   
+  },[currentUser])
 
   useEffect(() =>{
     const getFriends = async() =>{
