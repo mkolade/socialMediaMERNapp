@@ -29,7 +29,7 @@ function App() {
           />
           <Route 
             path={'/profileDetails'}  
-            element={!user ? <Navigate to={'/'} replace/> :<ProfileDetails/>}
+            element={!user ? <Navigate to={'/'} replace/> :<ProfileDetails/>
           />
         </Routes>
       </div>
