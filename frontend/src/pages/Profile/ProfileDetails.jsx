@@ -72,7 +72,7 @@ const ProfileDetails = () => {
                     />
                 </div>
                 <div className='detailsContainer'>
-                    <label htmlFor="">cover Picture</label>
+                    <label htmlFor="">Cover Picture</label>
                     <input 
                         type="file"
                         className='detailsInput'
