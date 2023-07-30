@@ -25,7 +25,6 @@ const ProfileDetails = () => {
     const [password,setPassword] = useState('')
 
     const [profilePic,setProfilePic] = useState('')
-    const [coverPic,setCoverPic] = useState('')
 
     useEffect(() => {
         setDesc(user.desc || '');
@@ -60,8 +59,16 @@ const ProfileDetails = () => {
             }catch(err){
                 console.log(err)
             } */
-            if(profilePic || coverPic){
-                console.log(profilePic,coverPic)
+            if(profilePic){
+                console.log("File: ",file)
+                const data = new FormData()
+                const random = Math.floor(Math.random() * 10000);
+                const profileName = `${random}-${profilePic.name}`;
+                data.append("file",file)
+                data.append("name",profileName)
+                userDetails.profilePicture = profileName
+                console.log(profilePic)
+  
             }
     }
 
@@ -81,17 +88,6 @@ const ProfileDetails = () => {
                         accept='.png,.jpeg,.jpg' 
                         id="profilePic" 
                         onChange={(e) =>setProfilePic(e.target.files[0])}
-                    />
-                </div>
-                <div className='detailsContainer'>
-                    <label htmlFor="">Cover Picture</label>
-                    <input 
-                        type="file"
-                        className='detailsInput'
-                        name="coverPic" 
-                        accept='.png,.jpeg,.jpg' 
-                        id="coverPic" 
-                        onChange={(e) =>setCoverPic(e.target.files[0])}
                     />
                 </div>
                 <div className='detailsContainer'>
