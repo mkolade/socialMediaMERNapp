@@ -7,7 +7,7 @@ import RightBar from '../../components/RightBar'
 import noAvatar from '/assets/person/noAvatar.png'
 import noCover from '/assets/person/noCover.png'
 import axios from 'axios'
-import { useParams } from 'react-router-dom'
+import { useParams,useNavigate } from 'react-router-dom'
 
 
 export default function Profile() {
@@ -17,6 +17,8 @@ export default function Profile() {
   const PF_PERSON = import.meta.env.VITE_PF_PERSON
   const PF_POST = import.meta.env.VITE_PF_POST
   const PF_SERVER = import.meta.env.VITE_PF_SERVER
+  
+  const navigate = useNavigate()
 
   useEffect( () =>{
     const fetchUser = async () =>{
@@ -25,6 +27,9 @@ export default function Profile() {
     }
     fetchUser()
   },[username])
+  const handleClick = () =>{
+    navigate('/profileDetails')
+  }
 
   return (
     <>
@@ -34,6 +39,7 @@ export default function Profile() {
         <div className="profileRight">
           <div className="profileRightTop">
             <div className="profileCover">
+              <span className='profileDetailsButton' onClick={handleClick}>Edit details</span>
               <img className="profileCoverImg" src={user.coverPicture ? PF_POST + user.coverPicture : noCover} alt="" />
               <img className="profileUserImg" src={user.profilePicture ? PF_PERSON + user.profilePicture : noAvatar} alt="" />
             </div>

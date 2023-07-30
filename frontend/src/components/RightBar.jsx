@@ -20,7 +20,7 @@ export default function RightBar({user}) {
 
   useEffect(() =>{
         setFollowed(currentUser.following.includes(user?._id))
-        console.log(user)
+        console.log(currentUser)
         console.log(currentUser.following)
         if(currentUser.following.includes(user?._id)){
           console.log('yes',user?.username)

@@ -1,20 +1,27 @@
-import React, { useContext, useRef,useState } from 'react'
+import React, { useContext, useEffect,useState } from 'react'
 import './Profile.css'
 import { AuthContext } from '../../context/AuthContext';
 import axios from 'axios'
 import swal from 'sweetalert'
+import { useNavigate } from 'react-router-dom';
 
 const ProfileDetails = () => {
 
     const {user} = useContext(AuthContext)
     const PF_SERVER = import.meta.env.VITE_PF_SERVER
     const [selectedOption, setSelectedOption] = useState('');
+    const navigate = useNavigate()
     const options = [
         { value: '1', label: 'Single' },
         { value: '2', label: 'Married' },
         { value: '3', label: 'Complicated' },
         
     ];
+    useEffect(() => {
+        setDesc(user.desc || '');
+        setFrom(user.from || '');
+        setCity(user.city || '');
+      }, [user]);
 
     const [desc,setDesc] = useState('')
     const [from,setFrom] = useState('')
@@ -27,7 +34,6 @@ const ProfileDetails = () => {
 
     const handleSubmit =async (e) =>{
         e.preventDefault()
-        if(selectedOption){
             const userDetails ={
                 userId:user._id,
                 desc:desc,
@@ -45,10 +51,10 @@ const ProfileDetails = () => {
                     icon: "success",
                     button: "Go ahead",
                   });
+                  navigate('/profile/' + user.username)
             }catch(err){
                 console.log(err)
             }
-        }
     }
 
     
@@ -59,14 +65,26 @@ const ProfileDetails = () => {
         <div className='detailsForm'>
             <form action="" className="mainForm" onSubmit={handleSubmit}>
                 <div className='detailsContainer'>
+                    <label htmlFor="">Profile Picture</label>
+                    <input 
+                        type="file"
+                        className='detailsInput'
+                    />
+                </div>
+                <div className='detailsContainer'>
+                    <label htmlFor="">cover Picture</label>
+                    <input 
+                        type="file"
+                        className='detailsInput'
+                    />
+                </div>
+                <div className='detailsContainer'>
                     <label htmlFor="">Profile Bio</label>
                     <input 
                         type="text"
                         required
-                        name='okay'
                         className='detailsInput'
-                       
-                        value={user.desc? user.desc : ""}
+                        value={desc}
                         onChange={(e) =>setDesc(e.target.value)}
                     />
                 </div>
@@ -75,9 +93,8 @@ const ProfileDetails = () => {
                     <input 
                         type="text"
                         required
-                        name='okay'
                         className='detailsInput'
-                        value={user.from? user.from : ""}
+                        value={from}
                         onChange={(e) =>setFrom(e.target.value)}
                     />
                 </div>
@@ -86,9 +103,8 @@ const ProfileDetails = () => {
                     <input 
                         type="text"
                         required
-                        name='okay'
                         className='detailsInput'
-                        value={user.city? user.city : ""}
+                        value={city}
                         onChange={(e) =>setCity(e.target.value)}
                     />
                 </div>
@@ -116,7 +132,6 @@ const ProfileDetails = () => {
                     <input 
                         type="password"
                         required
-                        name='okay'
                         className='detailsInput'
                         value={password}
                         onChange={(e) =>setPassword(e.target.value)}
