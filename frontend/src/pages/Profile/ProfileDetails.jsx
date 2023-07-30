@@ -17,16 +17,21 @@ const ProfileDetails = () => {
         { value: '3', label: 'Complicated' },
         
     ];
-    useEffect(() => {
-        setDesc(user.desc || '');
-        setFrom(user.from || '');
-        setCity(user.city || '');
-      }, [user]);
+    
 
     const [desc,setDesc] = useState('')
     const [from,setFrom] = useState('')
     const [city,setCity] = useState('')
     const [password,setPassword] = useState('')
+
+    const [profilePic,setProfilePic] = useState('')
+    const [coverPic,setCoverPic] = useState('')
+
+    useEffect(() => {
+        setDesc(user.desc || '');
+        setFrom(user.from || '');
+        setCity(user.city || '');
+      }, [user]);
 
     const handleOptionChange = (e) =>{
         setSelectedOption(e.target.value)
@@ -42,7 +47,7 @@ const ProfileDetails = () => {
                 city:city,
                 relationship:selectedOption
             }
-            try{
+            /* try{
                const res = await axios.put(PF_SERVER + "users/"+ user._id,userDetails)
                 console.log(res)
                 swal({
@@ -54,6 +59,9 @@ const ProfileDetails = () => {
                   navigate('/profile/' + user.username)
             }catch(err){
                 console.log(err)
+            } */
+            if(profilePic || coverPic){
+                console.log(profilePic,coverPic)
             }
     }
 
@@ -69,6 +77,10 @@ const ProfileDetails = () => {
                     <input 
                         type="file"
                         className='detailsInput'
+                        name="profilePic" 
+                        accept='.png,.jpeg,.jpg' 
+                        id="profilePic" 
+                        onChange={(e) =>setProfilePic(e.target.files[0])}
                     />
                 </div>
                 <div className='detailsContainer'>
@@ -76,6 +88,10 @@ const ProfileDetails = () => {
                     <input 
                         type="file"
                         className='detailsInput'
+                        name="coverPic" 
+                        accept='.png,.jpeg,.jpg' 
+                        id="coverPic" 
+                        onChange={(e) =>setCoverPic(e.target.files[0])}
                     />
                 </div>
                 <div className='detailsContainer'>
