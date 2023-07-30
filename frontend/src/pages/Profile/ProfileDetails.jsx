@@ -36,7 +36,7 @@ const ProfileDetails = () => {
         setSelectedOption(e.target.value)
     }
 
-    const handleSubmit =async (e) =>{
+    const handleSubmit = async (e) =>{
         e.preventDefault()
             const userDetails ={
                 userId:user._id,
@@ -60,15 +60,21 @@ const ProfileDetails = () => {
                 console.log(err)
             } */
             if(profilePic){
-                console.log("File: ",file)
                 const data = new FormData()
                 const random = Math.floor(Math.random() * 10000);
                 const profileName = `${random}-${profilePic.name}`;
-                data.append("file",file)
+                data.append("file",profilePic)
                 data.append("name",profileName)
                 userDetails.profilePicture = profileName
-                console.log(profilePic)
-  
+                for (let pair of data.entries()) {
+                    console.log(pair[0], pair[1]);
+                }
+                try{
+                  const res =  await axios.post(PF_SERVER + `upload/?filename=${encodeURIComponent(profileName)}`,data)
+                    console.log(res)
+                }catch(err){
+                console.log(err)
+                }
             }
     }
 

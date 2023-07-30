@@ -57,6 +57,25 @@ app.post('/api/upload/',upload.single("file"),(req,res) =>{
     }
 })
 
+const storage2 = multer.diskStorage({
+    destination:(req,file,cb) =>{
+        cb(null, path.join(__dirname, "public/images"))
+    },
+    filename:(req,file,cb) =>{
+        cb(null,req.query.filename)
+    }
+})
+const upload2 = multer({storage2})
+
+app.post('/api/upload2/',upload2.single("file"),(req,res) =>{
+    console.log("Request Body:", req.body);
+    try{
+        return res.status(200).json({message:"File upload successful"})
+    }catch(err){
+        console.log(err)
+    }
+})
+
 //routes
 app.use('/api/users',userRoutes)
 app.use('/api/auth',authRoutes)
