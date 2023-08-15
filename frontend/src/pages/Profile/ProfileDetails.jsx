@@ -46,7 +46,7 @@ const ProfileDetails = () => {
                 city:city,
                 relationship:selectedOption
             }
-            /* try{
+            try{
                const res = await axios.put(PF_SERVER + "users/"+ user._id,userDetails)
                 console.log(res)
                 swal({
@@ -58,8 +58,8 @@ const ProfileDetails = () => {
                   navigate('/profile/' + user.username)
             }catch(err){
                 console.log(err)
-            } */
-            if(profilePic){
+            }
+            /* if(profilePic){
                 const data = new FormData()
                 const random = Math.floor(Math.random() * 10000);
                 const profileName = `${random}-${profilePic.name}`;
@@ -75,7 +75,7 @@ const ProfileDetails = () => {
                 }catch(err){
                 console.log(err)
                 }
-            }
+            } */
     }
 
     
