@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import {Search,Person,Chat,Notifications} from '@mui/icons-material'
 import { Link, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../context/AuthContext'
@@ -7,6 +7,7 @@ import noAvatar from '/assets/person/noAvatar.png'
 export default function TopBar() {
 
   const {user,dispatch} = useContext(AuthContext)
+  const [searchQuery,setSearchQuery] = useState('')
   const PF_PERSON = import.meta.env.VITE_PF_PERSON
   const navigate =useNavigate()
 
@@ -15,6 +16,13 @@ export default function TopBar() {
     localStorage.removeItem("socialMediaUser")
     navigate('/')
   }
+
+  const handleSearchSubmit = (event) => {
+    event.preventDefault();
+    if (searchQuery.trim() !== '') {
+      console.log(searchQuery)
+    }
+  };
 
   return (
     <div className='topbarContainer'>
@@ -25,8 +33,13 @@ export default function TopBar() {
       </div>
       <div className="topbarCenter">
         <div className="searchBar">
-          <Search className='searchIcon'/>
-          <input placeholder='search for friends, posts or videos' className='searchInput' />
+          <Search onClick={handleSearchSubmit} className='searchIcon'/>
+          <input 
+            placeholder='search for friends through their unique username' 
+            className='searchInput' 
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)} 
+          />
         </div>
       </div>
       <div className="topbarRight">
