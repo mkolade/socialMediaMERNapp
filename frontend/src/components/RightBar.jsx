@@ -52,6 +52,11 @@ export default function RightBar({user}) {
           userId:currentUser._id
         })
         dispatch({type:"UNFOLLOW",payload:user._id})
+        const storedUser = JSON.parse(localStorage.getItem(("socialMediaUser")))
+        storedUser.following = storedUser.following.filter(
+          (followedUserId) => followedUserId != user._id
+        )
+        console.log("new followings",storedUser.following)
       }else{
          //follow user
          await axios.put(PF_SERVER + "users/"+user._id+"/follow",{
