@@ -64,3 +64,19 @@
   object-fit: cover;
   border-radius: 5px;
 }
+.notOkay{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.notFound{
+  margin-top: 30px;
+  width: 70%;
+  border: 7px solid black;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}

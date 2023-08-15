@@ -6,6 +6,7 @@ import Register from "./pages/Register/Register"
 import { useContext } from "react"
 import { AuthContext } from "./context/AuthContext"
 import ProfileDetails from "./pages/Profile/ProfileDetails"
+import NotFound from "./components/NotFound"
  
 
 function App() {
@@ -35,7 +36,7 @@ function App() {
           {/* 404 Route */}
           <Route
             path="*"
-            element={}
+            element={<NotFound/>}
           />
         </Routes>
       </div>

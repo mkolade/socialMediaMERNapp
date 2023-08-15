@@ -1,4 +1,4 @@
-import React ,{useState,useEffect}from 'react'
+import React ,{useState,useEffect, useContext}from 'react'
 import './Profile.css'
 import TopBar from '../../components/TopBar'
 import SideBar from '../../components/SideBar'
@@ -8,10 +8,12 @@ import noAvatar from '/assets/person/noAvatar.png'
 import noCover from '/assets/person/noCover.png'
 import axios from 'axios'
 import { useParams,useNavigate } from 'react-router-dom'
+import { AuthContext } from '../../context/AuthContext'
 
 
 export default function Profile() {
   const [user,setUser] = useState({})
+  const {user:currentUser} = useContext(AuthContext)
   const username = useParams().username
 
   const PF_PERSON = import.meta.env.VITE_PF_PERSON
@@ -39,7 +41,9 @@ export default function Profile() {
         <div className="profileRight">
           <div className="profileRightTop">
             <div className="profileCover">
-              <span className='profileDetailsButton' onClick={handleClick}>Edit details</span>
+              {(username === currentUser.username) &&
+                <span className='profileDetailsButton' onClick={handleClick}>Edit details</span>
+              }
               <img className="profileCoverImg" src={user.coverPicture ? PF_POST + user.coverPicture : noCover} alt="" />
               <img className="profileUserImg" src={user.profilePicture ? PF_PERSON + user.profilePicture : noAvatar} alt="" />
             </div>
