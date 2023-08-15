@@ -21,6 +21,8 @@ export default function TopBar() {
     event.preventDefault();
     if (searchQuery.trim() !== '') {
       console.log(searchQuery)
+      navigate(`/profile/${searchQuery}`)
+      setSearchQuery('')
     }
   };
 
@@ -33,13 +35,14 @@ export default function TopBar() {
       </div>
       <div className="topbarCenter">
         <div className="searchBar">
-          <Search onClick={handleSearchSubmit} className='searchIcon'/>
+          
           <input 
             placeholder='search for friends through their unique username' 
             className='searchInput' 
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)} 
           />
+          <Search onClick={handleSearchSubmit} className='searchIcon'/>
         </div>
       </div>
       <div className="topbarRight">
