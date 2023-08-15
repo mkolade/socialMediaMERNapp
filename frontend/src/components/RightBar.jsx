@@ -20,13 +20,6 @@ export default function RightBar({user}) {
 
   useEffect(() =>{
         setFollowed(currentUser.following.includes(user?._id))
-        console.log(currentUser)
-        console.log(currentUser.following)
-        if(currentUser.following.includes(user?._id)){
-          console.log('yes',user?.username)
-        }else{
-          console.log('no',user?.username)
-        }
   },[currentUser,user])
 
   useEffect(() =>{
@@ -58,9 +51,7 @@ export default function RightBar({user}) {
         storedUser.following = storedUser.following.filter(
           (followedUserId) => followedUserId != user._id
         )
-        
         localStorage.setItem("socialMediaUser",JSON.stringify(storedUser))
-        console.log("new followings",storedUser.following)
       }else{
          //follow user
          await axios.put(PF_SERVER + "users/"+user._id+"/follow",{
@@ -72,7 +63,6 @@ export default function RightBar({user}) {
         const storedUser = JSON.parse(localStorage.getItem("socialMediaUser"))
         storedUser.following.push(user._id)
         localStorage.setItem("socialMediaUser",JSON.stringify(storedUser))
-        console.log("new followings",storedUser.following)
       }
       setFollowed((prevFollowed) => !prevFollowed)
     }catch(err){
