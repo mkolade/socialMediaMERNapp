@@ -31,6 +31,12 @@ function App() {
             path={'/profileDetails'}  
             element={!user ? <Navigate to={'/'} replace/> :<ProfileDetails/>}
           />
+
+          {/* 404 Route */}
+          <Route
+            path="*"
+            element={}
+          />
         </Routes>
       </div>
     </Router>
