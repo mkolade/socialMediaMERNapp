@@ -52,10 +52,14 @@ export default function RightBar({user}) {
           userId:currentUser._id
         })
         dispatch({type:"UNFOLLOW",payload:user._id})
+
+        //remove unfollowed user from localstorage
         const storedUser = JSON.parse(localStorage.getItem(("socialMediaUser")))
         storedUser.following = storedUser.following.filter(
           (followedUserId) => followedUserId != user._id
         )
+        
+        localStorage.setItem("socialMediaUser",JSON.stringify(storedUser))
         console.log("new followings",storedUser.following)
       }else{
          //follow user
@@ -63,6 +67,12 @@ export default function RightBar({user}) {
           userId:currentUser._id
         })
         dispatch({type:"FOLLOW",payload:user._id})
+
+        //add followed user from localstorage
+        const storedUser = JSON.parse(localStorage.getItem("socialMediaUser"))
+        storedUser.following.push(user._id)
+        localStorage.setItem("socialMediaUser",JSON.stringify(storedUser))
+        console.log("new followings",storedUser.following)
       }
       setFollowed((prevFollowed) => !prevFollowed)
     }catch(err){
