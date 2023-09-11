@@ -8,8 +8,8 @@ const FollowPage = () => {
   return (
     <div className='followPages'>
         <TopBar/>
+        
         <main className='followPage'>
-
             <div className='mainHeading'>
                 <h1>Is this your first time here?</h1>
                 <h2>Get your Timeline set up by following these accounts.</h2>
@@ -32,6 +32,9 @@ const FollowPage = () => {
                     </Link>
                 </div>
             </div>
+            <button className='skipButton'>
+                Skip
+            </button>
         </main>
     </div>
   )
