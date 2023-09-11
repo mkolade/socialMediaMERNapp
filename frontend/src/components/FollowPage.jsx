@@ -3,10 +3,24 @@ import TopBar from "./TopBar"
 
 const FollowPage = () => {
   return (
-    <div className='followPage'>
+    <>
         <TopBar/>
-        FollowPage
-    </div>
+        <main className='followPage'>
+
+            <div className='mainHeading'>
+                <h1>Is this your first time here?</h1>
+                <h2>Get your Timeline set up by following these accounts.</h2>
+            </div>
+            <div className="accountsTab">
+                <div className='account'>
+                    ok
+                </div>
+                <div className='account'>
+                    ok
+                </div>
+            </div>
+        </main>
+    </>
   )
 }
 

@@ -80,3 +80,47 @@
   align-items: center;
   text-align: center;
 }
+
+.followPage{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  width: 100%;
+  border: 15px solid #1872f2;
+  padding: 5px;
+}
+.mainHeading{
+  margin-bottom: 30px;
+}
+.mainHeading h1{
+  margin-bottom: 5px;
+}
+.mainHeading h2{
+  font-weight: 200;
+}
+.accountsTab{
+  border: 2px solid black;
+  width: 700px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 30px;
+}
+@media screen and (max-width: 700px) {
+  .accountsTab{
+    border: 2px solid black;
+    max-width: 80%;
+    display: block;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+}
+
+.account{
+  flex: 1;
+  border: 3px solid black;
+}

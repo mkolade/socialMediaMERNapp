@@ -7,6 +7,7 @@ import { useContext } from "react"
 import { AuthContext } from "./context/AuthContext"
 import ProfileDetails from "./pages/Profile/ProfileDetails"
 import NotFound from "./components/NotFound"
+import FollowPage from "./components/FollowPage"
  
 
 function App() {
@@ -31,6 +32,11 @@ function App() {
           <Route 
             path={'/profileDetails'}  
             element={!user ? <Navigate to={'/'} replace/> :<ProfileDetails/>}
+          />
+
+          <Route
+            path={'/followPage'}
+            element={<FollowPage/>}
           />
 
           {/* 404 Route */}
