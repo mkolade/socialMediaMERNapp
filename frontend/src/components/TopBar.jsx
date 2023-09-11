@@ -37,7 +37,7 @@ export default function TopBar() {
         <div className="searchBar">
           
           <input 
-            placeholder='search for friends through their unique username' 
+            placeholder='search through unique username!!' 
             className='searchInput' 
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)} 

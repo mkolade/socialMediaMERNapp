@@ -38,6 +38,7 @@ const ProfileDetails = () => {
 
     const handleSubmit = async (e) =>{
         e.preventDefault()
+        if (password){
             const userDetails ={
                 userId:user._id,
                 desc:desc,
@@ -59,6 +60,14 @@ const ProfileDetails = () => {
             }catch(err){
                 console.log(err)
             }
+        }else{
+            swal({
+                title: "Enter password!",
+                text: res.data,
+                icon: "failure",
+                button: "Go back",
+              });
+        }
             /* if(profilePic){
                 const data = new FormData()
                 const random = Math.floor(Math.random() * 10000);
