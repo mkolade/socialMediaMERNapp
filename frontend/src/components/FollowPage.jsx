@@ -32,9 +32,11 @@ const FollowPage = () => {
                     </Link>
                 </div>
             </div>
-            <button className='skipButton'>
-                Skip
-            </button>
+            <a href="/profileDetails">
+                <button className='skipButton'>
+                    Next
+                </button>
+            </a>
         </main>
     </div>
   )
