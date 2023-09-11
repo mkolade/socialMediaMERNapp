@@ -135,22 +135,22 @@ export default function RightBar({user}) {
 
         <h4 className='profileRightbarTitle'>Following</h4>
         {friends.length > 0 &&
-          <div className="profileFollowings">
-              {friends.map(friend =>(
-                <Link to={'/profile/' + friend.username} style={{textDecoration:"none"}} key={friend._id}>
-                  <div className="profileFollower" >
-                    <img className='followerImg' src={ friend.profilePicture ? PF_PERSON +  friend.profilePicture :noAvatar } alt="" />
-                    <span className="followerName">
-                      {friend && friend.username && friend.username
-                        .split(' ')
-                        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-                        .join(' ')
-                      }
-                  </span>
-                  </div>
-                </Link>
-              ))}
-        </div>
+            <div className="profileFollowings">
+                {friends.map(friend =>(
+                  <Link to={'/profile/' + friend.username} style={{textDecoration:"none"}} key={friend._id}>
+                    <div className="profileFollower" >
+                      <img className='followerImg' src={ friend.profilePicture ? PF_PERSON +  friend.profilePicture :noAvatar } alt="" />
+                      <span className="followerName">
+                        {friend && friend.username && friend.username
+                          .split(' ')
+                          .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+                          .join(' ')
+                        }
+                    </span>
+                    </div>
+                  </Link>
+                ))}
+            </div>
         }
         
       </>
