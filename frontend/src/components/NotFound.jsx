@@ -9,8 +9,8 @@ const NotFound = () => {
         <div className="notFound">
            <h2>
            Oops. 404 page not found. <br />
-           Go back to <Link to={"/"}> homepage</Link>
-
+           Go back to <i><Link to={"/"}> homepage</Link>
+</i> 
            </h2>
         </div>
     </div>
