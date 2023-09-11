@@ -2,7 +2,7 @@ import React from 'react'
 import TopBar from "./TopBar"
 import { Link } from 'react-router-dom'
 import person3 from '/assets/person/person3.jpeg'
-import person1 from '/assets/person/person1.jpeg'
+import person4 from '/assets/person/person4.jpeg'
 
 const FollowPage = () => {
   return (
@@ -18,7 +18,7 @@ const FollowPage = () => {
                 <div className='account'>
                     <Link to={'/profile/jane'} style={{textDecoration:"none"}}>
                         <div className="accountOwner" >
-                            <img className='accountImg' src={person1} alt="" />
+                            <img className='accountImg' src={person3} alt="" />
                             <span className="accountName"> Jane </span>
                         </div>
                     </Link>
@@ -26,7 +26,7 @@ const FollowPage = () => {
                 <div className='account'>
                     <Link to={'/profile/janet'} style={{textDecoration:"none"}}>
                         <div className="accountOwner" >
-                            <img className='accountImg' src={person3} alt="" />
+                            <img className='accountImg' src={person4} alt="" />
                             <span className="accountName"> Janet </span>
                         </div>
                     </Link>
