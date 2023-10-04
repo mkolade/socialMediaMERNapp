@@ -3,7 +3,7 @@ import './Login.css'
 import { loginCall } from '../../apiCalls'
 import { AuthContext } from '../../context/AuthContext'
 import  CircularProgress from '@mui/material/CircularProgress'
-import {Link} from 'react-router-dom'
+import {Link,useNavigate} from 'react-router-dom'
 import swal from 'sweetalert'
 export default function Login() {
 
@@ -21,6 +21,7 @@ export default function Login() {
   }, [dispatch]);
 
   const handleSubmit = (e) =>{
+    const navigate = useNavigate();
     e.preventDefault()
       loginCall({email:email.current.value,password:password.current.value},dispatch)
       if(error){
