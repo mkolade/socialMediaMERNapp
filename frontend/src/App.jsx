@@ -12,13 +12,6 @@ import FollowPage from "./components/FollowPage"
 
 function App() {
   const {user} = useContext(AuthContext)
-  if(user){
-    console.log(user.following.length)
-  }
-  const isUserFollowingEmpty = (user && user.following.length === 0);
-
-  console.log('isUserFollowingEmpty:', isUserFollowingEmpty);
- 
   return (
     <Router>
       <div>
@@ -30,12 +23,7 @@ function App() {
           />
           <Route 
             path={'/login'} 
-            element={<Login/>}
-            
-          />
-          <Route 
-            path={'/followPage'}  
-            element={<FollowPage/> }
+            element={user ? <Navigate to={'/followPage'} replace/> :<Login/>}
           />
           <Route 
             path={'/register'}  
@@ -44,6 +32,11 @@ function App() {
           <Route 
             path={'/profileDetails'}  
             element={!user ? <Navigate to={'/'} replace/> :<ProfileDetails/>}
+          />
+
+          <Route
+            path={'/followPage'}
+            element={<FollowPage/>}
           />
 
           {/* 404 Route */}
