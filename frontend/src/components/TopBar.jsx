@@ -74,8 +74,8 @@ export default function TopBar() {
           </div>
 
         </div>
-        <Link to={`/profile/${user.username}`}>
-          <img src={user.profilePicture ?PF_PERSON + user.profilePicture : noAvatar} alt="" className="topbarImg" />
+        <Link to={`/profile/${user?.username}`}>
+          <img src={user?.profilePicture ?PF_PERSON + user?.profilePicture : noAvatar} alt="" className="topbarImg" />
         </Link>
       </div>
     </div>

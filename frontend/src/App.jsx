@@ -23,7 +23,7 @@ function App() {
           />
           <Route 
             path={'/login'} 
-            element={user ? <Navigate to={'/followPage'} replace/> :<Login/>}
+            element={<Login/>}
           />
           <Route 
             path={'/register'}  
