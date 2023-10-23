@@ -17,7 +17,6 @@ function App() {
       <div>
         <Routes>
           
-          <Route exact path={'/'} element={user ? <HomePage/> : <Login/> }/>
           <Route 
             path={'/profile/:username'} 
             element={<Profile/>}    
@@ -28,8 +27,10 @@ function App() {
           />
           <Route 
             path={'/login'} 
-            element={user ? <Navigate to={'/followpage'}/> : <Login/>}
+            element={user ? <Navigate to={'/followPage'}/> : <Login/>}
           />
+          <Route exact path={'/'} element={user ? <HomePage/> : <Login/> }/>
+
           <Route 
             path={'/register'}  
             element={user ? <Navigate to={'/'} replace/> :<Register/>}
