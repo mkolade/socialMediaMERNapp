@@ -8,9 +8,9 @@ const  morgan = require('morgan')
 const cors = require('cors')
 const multer = require('multer')
 
-const userRoutes = require('./routes/userRoutes')
-const authRoutes = require('./routes/authRoutes')
-const postRoutes = require('./routes/postRoutes')
+const userRoutes = require('./api/routes/userRoutes')
+const authRoutes = require('./api/routes/authRoutes')
+const postRoutes = require('./api/routes/postRoutes')
 const path = require('path')
 
 dotenv.config()
