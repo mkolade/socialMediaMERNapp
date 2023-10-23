@@ -16,14 +16,19 @@ function App() {
     <Router>
       <div>
         <Routes>
+          
           <Route exact path={'/'} element={user ? <HomePage/> : <Login/> }/>
           <Route 
             path={'/profile/:username'} 
             element={<Profile/>}    
           />
+          <Route
+            path={'/followPage'}
+            element={<FollowPage/>}
+          />
           <Route 
             path={'/login'} 
-            element={<Login/>}
+            element={user ? <Navigate to={'/followpage'}/> : <Login/>}
           />
           <Route 
             path={'/register'}  
@@ -34,10 +39,7 @@ function App() {
             element={!user ? <Navigate to={'/'} replace/> :<ProfileDetails/>}
           />
 
-          <Route
-            path={'/followPage'}
-            element={<FollowPage/>}
-          />
+          
 
           {/* 404 Route */}
           <Route

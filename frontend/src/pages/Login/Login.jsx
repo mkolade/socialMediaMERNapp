@@ -3,14 +3,13 @@ import './Login.css'
 import { loginCall } from '../../apiCalls'
 import { AuthContext } from '../../context/AuthContext'
 import  CircularProgress from '@mui/material/CircularProgress'
-import {Link, useNavigate} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import swal from 'sweetalert'
 export default function Login() {
 
   const email = useRef()
   const password = useRef()
   const {user,isFetching,error,dispatch} = useContext(AuthContext)
-  const navigate = useNavigate()
 
   useEffect(() => {
     // Check if user data is available in local storage
@@ -32,11 +31,7 @@ export default function Login() {
           icon: "error",
           button: "Enter details again",
         });
-      }else{
-        const latestUser = await user;
-        navigate('/followPage');
-        console.log(latestUser)
-      }
+      }e
     
   }
   return (
