@@ -39,6 +39,7 @@ app.use(morgan('common'));
 app.use(helmet());
 app.use(cors());
 
+//for post-image upload
 const storage = multer.diskStorage({
     destination:(req,file,cb) =>{
         cb(null,"public/images/post")
@@ -48,7 +49,6 @@ const storage = multer.diskStorage({
     }
 })
 const upload = multer({storage})
-
 app.post('/api/upload/',upload.single("file"),(req,res) =>{
     try{
         return res.status(200).json({message:"File upload successful"})
@@ -57,6 +57,7 @@ app.post('/api/upload/',upload.single("file"),(req,res) =>{
     }
 })
 
+//for profilepicture upload
 const storage2 = multer.diskStorage({
     destination:(req,file,cb) =>{
         cb(null, path.join(__dirname, "public/images"))
@@ -66,7 +67,6 @@ const storage2 = multer.diskStorage({
     }
 })
 const upload2 = multer({storage2})
-
 app.post('/api/upload2/',upload2.single("file"),(req,res) =>{
     console.log("Request Body:", req.body);
     try{
