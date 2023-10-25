@@ -12,4 +12,4 @@ npm run dev - to run frontend locally for development
 vite build - to build frontend for production
 
 Fully desktop only atm but
-Currently working only mobile view !!!
+Currently working on mobile view !!!
