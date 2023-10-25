@@ -81,6 +81,11 @@ app.use('/api/users',userRoutes)
 app.use('/api/auth',authRoutes)
 app.use('/api/post',postRoutes)
 app.use("/images", (req,res,next) =>{
+
+    // Set the Secure and SameSite=None attributes for cookies
+    res.header('Set-Cookie', 'Secure; SameSite=None');
+
+    // Continue serving the static resources
     res.setHeader("Cross-Origin-Resource-Policy", "same-site")
     next();
 },express.static(path.join(__dirname,'public/images')))
