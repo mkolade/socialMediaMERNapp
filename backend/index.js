@@ -36,7 +36,9 @@ const connectToMongoDb = async () =>{
 //middlewares
 app.use(express.json());
 app.use(morgan('common'));
-app.use(helmet());
+app.use(helmet({
+    crossOriginResourcePolicy: false,
+}))
 app.use(cors());
 
 //for post-image upload
@@ -57,7 +59,7 @@ app.post('/api/upload/',upload.single("file"),(req,res) =>{
     }
 })
 
-//for profilepicture upload
+//for profilePicture upload
 const storage2 = multer.diskStorage({
     destination:(req,file,cb) =>{
         cb(null, path.join(__dirname, "public/images"))
@@ -81,11 +83,7 @@ app.use('/api/users',userRoutes)
 app.use('/api/auth',authRoutes)
 app.use('/api/post',postRoutes)
 app.use("/images", (req,res,next) =>{
-
-    // Set the Secure and SameSite=None attributes for cookies
-    res.header('Set-Cookie', 'Secure; SameSite=None');
-
-    // Continue serving the static resources
+    //serve the static resources
     res.setHeader("Cross-Origin-Resource-Policy", "same-site")
     next();
 },express.static(path.join(__dirname,'public/images')))
